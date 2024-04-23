@@ -1,0 +1,10 @@
+../Core/Src/hd44780.c:32:6:lcd_clock	8	static
+../Core/Src/hd44780.c:44:6:lcd_reset	8	static
+../Core/Src/hd44780.c:88:6:lcd_write	16	static
+../Core/Src/hd44780.c:163:6:lcd_clear	8	static
+../Core/Src/hd44780.c:171:6:lcd_display_settings	16	static
+../Core/Src/hd44780.c:178:6:lcd_display_address	16	static
+../Core/Src/hd44780.c:183:6:lcd_cgram_address	16	static
+../Core/Src/hd44780.c:188:6:lcd_print	24	static
+../Core/Src/hd44780.c:214:6:writeIntegerToLCD	24	static
+../Core/Src/hd44780.c:231:6:moveToXY	24	static

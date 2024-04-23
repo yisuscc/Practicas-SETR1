@@ -1,0 +1,2 @@
+../Core/Src/LPS22.c:10:6:LPS22_Init	1
+../Core/Src/LPS22.c:20:7:LPS22_ReadPress	1

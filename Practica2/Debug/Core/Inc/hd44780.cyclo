@@ -1,0 +1,12 @@
+../Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_ll_gpio.h:956:22:LL_GPIO_SetOutputPin	1
+../Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_ll_gpio.h:985:22:LL_GPIO_ResetOutputPin	1
+../Core/Inc/hd44780.c:32:6:lcd_clock	1
+../Core/Inc/hd44780.c:41:6:lcd_reset	1
+../Core/Inc/hd44780.c:76:6:lcd_write	10
+../Core/Inc/hd44780.c:134:6:lcd_clear	1
+../Core/Inc/hd44780.c:142:6:lcd_display_settings	1
+../Core/Inc/hd44780.c:149:6:lcd_display_address	1
+../Core/Inc/hd44780.c:154:6:lcd_cgram_address	1
+../Core/Inc/hd44780.c:159:6:lcd_print	9
+../Core/Inc/hd44780.c:185:6:writeIntegerToLCD	1
+../Core/Inc/hd44780.c:202:6:moveToXY	8
