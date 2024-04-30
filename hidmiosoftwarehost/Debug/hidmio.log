@@ -1,0 +1,7 @@
+﻿cl : línea de comandos  warning D9035: La opción 'Gm' está desusada y se quitará en próximas versiones
+cl : línea de comandos  warning D9007: '/Gm' requiere '/Zi o /ZI'; opción omitida
+  hidmio.cpp
+C:\Users\jesus\Documents\SETR1ws\Practicas-SETR1\hidmiosoftwarehost\hidmio.cpp(98,12): warning C4996: 'getche': The POSIX name for this item is deprecated. Instead, use the ISO C and C++ conformant name: _getche. See online help for details.
+  (compilando archivo de origen "/hidmio.cpp")
+  
+  hidmio.vcxproj -> C:\Users\jesus\Documents\SETR1ws\Practicas-SETR1\hidmiosoftwarehost\Debug\hidmio.exe

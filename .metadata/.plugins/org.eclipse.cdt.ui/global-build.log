@@ -806,3 +806,93 @@ arm-none-eabi-size   P6Fase2_2Intento.elf
   37608	    288	   4760	  42656	   a6a0	P6Fase2_2Intento.elf
 Finished building: default.size.stdout
  
+13:56:53 **** Incremental Build of configuration Debug for project P6Fase2_2Intento ****
+make -j12 all 
+arm-none-eabi-gcc "../USB_DEVICE/App/usbd_desc.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32L475xx -c -I../Core/Inc -I../Drivers/STM32L4xx_HAL_Driver/Inc -I../Drivers/STM32L4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32L4xx/Include -I../Drivers/CMSIS/Include -I../USB_DEVICE/App -I../USB_DEVICE/Target -I../Middlewares/ST/STM32_USB_Device_Library/Core/Inc -I../Middlewares/ST/STM32_USB_Device_Library/Class/CustomHID/Inc -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"USB_DEVICE/App/usbd_desc.d" -MT"USB_DEVICE/App/usbd_desc.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "USB_DEVICE/App/usbd_desc.o"
+arm-none-eabi-gcc -o "P6Fase2_2Intento.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\jesus\Documents\SETR1ws\Practicas-SETR1\P6Fase2_2Intento\STM32L475VGTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="P6Fase2_2Intento.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: P6Fase2_2Intento.elf
+ 
+arm-none-eabi-size   P6Fase2_2Intento.elf 
+arm-none-eabi-objdump -h -S  P6Fase2_2Intento.elf  > "P6Fase2_2Intento.list"
+   text	   data	    bss	    dec	    hex	filename
+  37608	    288	   4760	  42656	   a6a0	P6Fase2_2Intento.elf
+Finished building: default.size.stdout
+ 
+Finished building: P6Fase2_2Intento.list
+ 
+14:37:13 **** Incremental Build of configuration Debug for project P6Fase2_2Intento ****
+make -j12 all 
+arm-none-eabi-gcc "../USB_DEVICE/App/usbd_custom_hid_if.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32L475xx -c -I../Core/Inc -I../Drivers/STM32L4xx_HAL_Driver/Inc -I../Drivers/STM32L4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32L4xx/Include -I../Drivers/CMSIS/Include -I../USB_DEVICE/App -I../USB_DEVICE/Target -I../Middlewares/ST/STM32_USB_Device_Library/Core/Inc -I../Middlewares/ST/STM32_USB_Device_Library/Class/CustomHID/Inc -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"USB_DEVICE/App/usbd_custom_hid_if.d" -MT"USB_DEVICE/App/usbd_custom_hid_if.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "USB_DEVICE/App/usbd_custom_hid_if.o"
+arm-none-eabi-gcc "../Middlewares/ST/STM32_USB_Device_Library/Class/CustomHID/Src/usbd_customhid.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32L475xx -c -I../Core/Inc -I../Drivers/STM32L4xx_HAL_Driver/Inc -I../Drivers/STM32L4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32L4xx/Include -I../Drivers/CMSIS/Include -I../USB_DEVICE/App -I../USB_DEVICE/Target -I../Middlewares/ST/STM32_USB_Device_Library/Core/Inc -I../Middlewares/ST/STM32_USB_Device_Library/Class/CustomHID/Inc -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Middlewares/ST/STM32_USB_Device_Library/Class/CustomHID/Src/usbd_customhid.d" -MT"Middlewares/ST/STM32_USB_Device_Library/Class/CustomHID/Src/usbd_customhid.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Middlewares/ST/STM32_USB_Device_Library/Class/CustomHID/Src/usbd_customhid.o"
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32L475xx -c -I../Core/Inc -I../Drivers/STM32L4xx_HAL_Driver/Inc -I../Drivers/STM32L4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32L4xx/Include -I../Drivers/CMSIS/Include -I../USB_DEVICE/App -I../USB_DEVICE/Target -I../Middlewares/ST/STM32_USB_Device_Library/Core/Inc -I../Middlewares/ST/STM32_USB_Device_Library/Class/CustomHID/Inc -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+../Middlewares/ST/STM32_USB_Device_Library/Class/CustomHID/Src/usbd_customhid.c: In function 'USBD_CUSTOM_HID_ReceivePacket':
+../Middlewares/ST/STM32_USB_Device_Library/Class/CustomHID/Src/usbd_customhid.c:711:34: warning: variable 'hhid' set but not used [-Wunused-but-set-variable]
+  711 |   USBD_CUSTOM_HID_HandleTypeDef *hhid;
+      |                                  ^~~~
+../Core/Src/main.c: In function 'main':
+../Core/Src/main.c:122:1: warning: implicit declaration of function 'USBD_LL_PrepareReceive' [-Wimplicit-function-declaration]
+  122 | USBD_LL_PrepareReceive(&hUsbDeviceFS,1, dato, 6);
+      | ^~~~~~~~~~~~~~~~~~~~~~
+../Core/Src/main.c:115:7: warning: unused variable 'i' [-Wunused-variable]
+  115 |   int i = 0;
+      |       ^
+arm-none-eabi-gcc -o "P6Fase2_2Intento.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\jesus\Documents\SETR1ws\Practicas-SETR1\P6Fase2_2Intento\STM32L475VGTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="P6Fase2_2Intento.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: P6Fase2_2Intento.elf
+ 
+arm-none-eabi-size   P6Fase2_2Intento.elf 
+arm-none-eabi-objdump -h -S  P6Fase2_2Intento.elf  > "P6Fase2_2Intento.list"
+   text	   data	    bss	    dec	    hex	filename
+  37360	    288	   4768	  42416	   a5b0	P6Fase2_2Intento.elf
+Finished building: default.size.stdout
+ 
+Finished building: P6Fase2_2Intento.list
+ 
+14:38:13 **** Incremental Build of configuration Debug for project P6Fase2_2Intento ****
+make -j12 all 
+arm-none-eabi-size   P6Fase2_2Intento.elf 
+   text	   data	    bss	    dec	    hex	filename
+  37360	    288	   4768	  42416	   a5b0	P6Fase2_2Intento.elf
+Finished building: default.size.stdout
+ 
+14:39:47 **** Incremental Build of configuration Debug for project P6Fase2_2Intento ****
+make -j12 all 
+arm-none-eabi-size   P6Fase2_2Intento.elf 
+   text	   data	    bss	    dec	    hex	filename
+  37360	    288	   4768	  42416	   a5b0	P6Fase2_2Intento.elf
+Finished building: default.size.stdout
+ 
+14:46:42 **** Incremental Build of configuration Debug for project P6Fase2_2Intento ****
+make -j12 all 
+arm-none-eabi-size   P6Fase2_2Intento.elf 
+   text	   data	    bss	    dec	    hex	filename
+  37360	    288	   4768	  42416	   a5b0	P6Fase2_2Intento.elf
+Finished building: default.size.stdout
+ 
+14:46:55 **** Incremental Build of configuration Debug for project P6Fase2_2Intento ****
+make -j12 all 
+arm-none-eabi-size   P6Fase2_2Intento.elf 
+   text	   data	    bss	    dec	    hex	filename
+  37360	    288	   4768	  42416	   a5b0	P6Fase2_2Intento.elf
+Finished building: default.size.stdout
+ 
+14:47:25 **** Incremental Build of configuration Debug for project P6Fase2_2Intento ****
+make -j12 all 
+arm-none-eabi-size   P6Fase2_2Intento.elf 
+   text	   data	    bss	    dec	    hex	filename
+  37360	    288	   4768	  42416	   a5b0	P6Fase2_2Intento.elf
+Finished building: default.size.stdout
+ 
+14:49:19 **** Incremental Build of configuration Debug for project P6Fase2_2Intento ****
+make -j12 all 
+arm-none-eabi-size   P6Fase2_2Intento.elf 
+   text	   data	    bss	    dec	    hex	filename
+  37360	    288	   4768	  42416	   a5b0	P6Fase2_2Intento.elf
+Finished building: default.size.stdout
+ 
+14:49:51 **** Incremental Build of configuration Debug for project P6Fase2_2Intento ****
+make -j12 all 
+arm-none-eabi-size   P6Fase2_2Intento.elf 
+   text	   data	    bss	    dec	    hex	filename
+  37360	    288	   4768	  42416	   a5b0	P6Fase2_2Intento.elf
+Finished building: default.size.stdout
+ 

@@ -53,7 +53,8 @@ UART_HandleTypeDef huart1;
 UART_HandleTypeDef huart3;
 
 /* USER CODE BEGIN PV */
-
+extern USBD_HandleTypeDef hUsbDeviceFS;
+extern uint8_t miflag;
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -118,22 +119,28 @@ int main(void)
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
   dato[0]=0;
+USBD_LL_PrepareReceive(&hUsbDeviceFS,1, dato, 6);
   while (1)
   {
-	  for (i=0;i<50;i++)
-	  {
-	  dato[1]=4; //cada 100ms desplazamos el ratón 4 posiciones
-	  dato[2]=4;
-	  USBD_CUSTOM_HID_SendReport_FS(dato,6);
-	  HAL_Delay(100);
+	  if(miflag==1){
+		  USBD_LL_PrepareReceive(&hUsbDeviceFS,1, dato, 6);
+		  miflag=0; //poner aquí un breakpoint
+
 	  }
-	  for (i=0;i<50;i++)
-	  {
-	  dato[1]=-4;
-	  dato[2]=-4;
-	  USBD_CUSTOM_HID_SendReport_FS(dato,6);
-	  HAL_Delay(100);
-	  }
+//	  for (i=0;i<50;i++)
+//	  {
+//	  dato[1]=4; //cada 100ms desplazamos el ratón 4 posiciones
+//	  dato[2]=4;
+//	  USBD_CUSTOM_HID_SendReport_FS(dato,6);
+//	  HAL_Delay(100);
+//	  }
+//	  for (i=0;i<50;i++)
+//	  {
+//	  dato[1]=-4;
+//	  dato[2]=-4;
+//	  USBD_CUSTOM_HID_SendReport_FS(dato,6);
+//	  HAL_Delay(100);
+//	  }
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */

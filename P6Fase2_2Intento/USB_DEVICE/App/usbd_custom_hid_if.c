@@ -99,7 +99,7 @@ __ALIGN_BEGIN static uint8_t CUSTOM_HID_ReportDesc_FS[USBD_CUSTOM_HID_REPORT_DES
 		0x15, 0x00, // Logical Minimum (data bytes in the report may have minimum value = 0x00)
 		0x26, 0xFF, 0x00, // Logical Maximum (data bytes in the report may have maximum value = 0x00FF)
 		0x75, 0x08, //Report Size: 8-bit field size
-		0x95, 0x06, //Report Count: 6 of 8-bit fields (the next time the parser hits an "Input", "Outputâ€?)
+		0x95, 0x06, //Report Count: 6 of 8-bit fields (the next time the parser hits an "Input", "Outputï¿½?)
 		0x81, 0x00, //Input (Data, Array, Abs): Instantiates input packet fields based on the above report size, count, logical min/max, and usage.
 		0x19, 0x01, // Usage Minimum
 		0x29, 0x06, // Usage Maximum //6 output usages total (0x01 to 6)
@@ -123,7 +123,7 @@ __ALIGN_BEGIN static uint8_t CUSTOM_HID_ReportDesc_FS[USBD_CUSTOM_HID_REPORT_DES
 extern USBD_HandleTypeDef hUsbDeviceFS;
 
 /* USER CODE BEGIN EXPORTED_VARIABLES */
-
+uint8_t miflag = 0;
 /* USER CODE END EXPORTED_VARIABLES */
 /**
   * @}
@@ -190,9 +190,9 @@ static int8_t CUSTOM_HID_OutEvent_FS(uint8_t event_idx, uint8_t state)
   /* USER CODE BEGIN 6 */
   UNUSED(event_idx);
   UNUSED(state);
-
+  miflag = 1;
   /* Start next USB packet transfer once data processing is completed */
-  USBD_CUSTOM_HID_ReceivePacket(&hUsbDeviceFS);
+  //USBD_CUSTOM_HID_ReceivePacket(&hUsbDeviceFS);
 
   return (USBD_OK);
   /* USER CODE END 6 */
