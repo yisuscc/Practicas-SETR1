@@ -1,20 +1,20 @@
 /* USER CODE BEGIN Header */
 /**
- ******************************************************************************
- * @file           : main.c
- * @brief          : Main program body
- ******************************************************************************
- * @attention
- *
- * Copyright (c) 2024 STMicroelectronics.
- * All rights reserved.
- *
- * This software is licensed under terms that can be found in the LICENSE file
- * in the root directory of this software component.
- * If no LICENSE file comes with this software, it is provided AS-IS.
- *
- ******************************************************************************
- */
+  ******************************************************************************
+  * @file           : main.c
+  * @brief          : Main program body
+  ******************************************************************************
+  * @attention
+  *
+  * Copyright (c) 2024 STMicroelectronics.
+  * All rights reserved.
+  *
+  * This software is licensed under terms that can be found in the LICENSE file
+  * in the root directory of this software component.
+  * If no LICENSE file comes with this software, it is provided AS-IS.
+  *
+  ******************************************************************************
+  */
 /* USER CODE END Header */
 /* Includes ------------------------------------------------------------------*/
 #include "main.h"
@@ -22,10 +22,6 @@
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
 #include "hd44780.h"
-#include "LPS22.h"
-#include "HTS221.h"
-#include "float.h"
-#include "stdio.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -60,17 +56,7 @@ UART_HandleTypeDef huart3;
 PCD_HandleTypeDef hpcd_USB_OTG_FS;
 
 /* USER CODE BEGIN PV */
-#ifdef __GNUC__
-/* With GCC/RAISONANCE, small printf (option LD Linker->Libraries->Small printf
-set to 'Yes') calls __io_putchar() */
-#define PUTCHAR_PROTOTYPE int __io_putchar(int ch)
-#else
-#define PUTCHAR_PROTOTYPE int fputc(int ch, FILE *f)
-#endif /* __GNUC__ */
-PUTCHAR_PROTOTYPE{
-HAL_UART_Transmit(&huart1,(uint8_t *) &ch,1,2);
-return ch;
-}
+
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -78,64 +64,20 @@ void SystemClock_Config(void);
 void PeriphCommonClock_Config(void);
 static void MX_GPIO_Init(void);
 static void MX_DFSDM1_Init(void);
+static void MX_I2C2_Init(void);
 static void MX_QUADSPI_Init(void);
 static void MX_SPI3_Init(void);
+static void MX_USART1_UART_Init(void);
 static void MX_USART3_UART_Init(void);
 static void MX_USB_OTG_FS_PCD_Init(void);
 static void MX_ADC1_Init(void);
-static void MX_I2C2_Init(void);
-static void MX_USART1_UART_Init(void);
 /* USER CODE BEGIN PFP */
 
 /* USER CODE END PFP */
 
 /* Private user code ---------------------------------------------------------*/
 /* USER CODE BEGIN 0 */
-void ini_lcd() {
-	lcd_reset();
-	lcd_display_settings(1, 0, 0);
-	lcd_clear();
-}
-uint8_t getButton(uint16_t sample) {
-	// uint8_t getButton(uint32_t sample)
-	// uint8_t getButton(uint16_t sample)
-	//da errores si las declaramos de esta forma
-	uint8_t res = 0;
-	if (sample == 4095) {
-		res = 0;
-	} else if (sample >= 700 && sample <= 720) {
-		// boton up
-		res = 2;
-	} else if (sample >= 1618 && sample <= 1630) {
-		//boton down
-		res = 3;
-	} else if (sample >= 2380 && sample <= 2400) {
-		// boton left
-		res = 4;
-	} else if (sample >= 3350 && sample <= 3380) {
-		// select 3366
-		res = 5;
-	} else if (sample >= 0 && sample <= 100) {
-		//boton right 000
-		res = 1;
-	}
-	return res;
-}
-void display_lcd(float press, float temp, float hum) {
 
-	uint8_t str[20]; // porqúe 20
-	//Formatear y escribir la presión
-
-	sprintf(str, "Press: %.1fhPA", press);
-	moveToXY(0, 0);
-	lcd_print(str);
-	//de la temp y demás
-
-	sprintf(str, "T:%.1fc H:%.1f\%%", temp, hum);
-	moveToXY(1, 0);
-
-	lcd_print(str);
-}
 /* USER CODE END 0 */
 
 /**
@@ -170,140 +112,48 @@ int main(void)
   /* Initialize all configured peripherals */
   MX_GPIO_Init();
   MX_DFSDM1_Init();
+  MX_I2C2_Init();
   MX_QUADSPI_Init();
   MX_SPI3_Init();
+  MX_USART1_UART_Init();
   MX_USART3_UART_Init();
   MX_USB_OTG_FS_PCD_Init();
   MX_ADC1_Init();
-  MX_I2C2_Init();
-  MX_USART1_UART_Init();
   /* USER CODE BEGIN 2 */
-
+lcd_reset();
+lcd_display_settings(1, 0, 0);
+lcd_clear();
 //lcd_print("Funciona!");
   /* USER CODE END 2 */
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
-// Inicializamos los perifericos
-// inicializamos el lcd
-	ini_lcd();
-//inicializamos el LPS22H
-	LPS22_Init();
-	//inicializamos el HTS221_InitSs
-	HTS221_Init();
-	// aquí almacenaremos los datos
-
-	float pressAVG = 0;
-	float tempAVG = 0;
-	float humAVG = 0;
-	// necesario incluir una biblioteca adicional
-	float pressMax = FLT_MIN;
-	float pressMin = FLT_MAX;
-	float tempMax = FLT_MIN;
-	float tempMin = FLT_MAX;
-	float humMax = FLT_MIN;
-	float humMin = FLT_MAX;
-	float press;
-	float temp;
-	float hum;
-
-// para la temporizacíon
-	int iBucle = 0;// almacena las iteraciones del bucle
-//determina el modulo
-//	a los 100 iteraciones se reinicia el bucle
-	// si no lo hemos reinicado antes
-	// para evitar overflows
-	const int resetBucle= 100;
-
-	while (1) { // usamos temporización
-		//TAREA A lectura de sensores
-		if (iBucle == 0) {
-//			ponemos todo a 0 y leemos
-			//así evitamos overflows
-			// para evitar tener que leerlo 2 veces
-			THSample ths = HTS221_Read();
-			temp = 0;
-			hum = 0;
-			press = 0;
-			pressAVG = 0;
-			tempAVG = 0;
-			humAVG = 0;
-			pressMax = FLT_MIN;
-			pressMin = FLT_MAX;
-			 tempMax = FLT_MIN;
-			tempMin = FLT_MAX;
-			 humMax = FLT_MIN;
-			 humMin = FLT_MAX;
-		}
-		if ( iBucle %5 == 0) {
-			// cada 5 iteraciones del bucle
-			//tomamos medidas
-			THSample ths = HTS221_Read();
-			temp = ths.temp;
-			hum = ths.hum;
-			press = LPS22_ReadPress();
-			// actualizamos las variable
-
-			tempAVG = (tempAVG*iBucle +temp) /(iBucle+1);
-			humAVG = (humAVG*iBucle +temp) /(iBucle+1);
-			pressAVG = (pressAVG*iBucle +temp) /(iBucle+1);
-			pressMax = press >pressMax?press: pressMax;
-			tempMax = temp >tempMax?temp: tempMax;
-			humMax =  hum> humMax?hum:humMax;
-			pressMin = press <pressMin?press: pressMin;
-			tempMin = temp <tempMin?temp: tempMin;
-			humMin =  hum< humMin?hum:humMin;
-
-
-
-
-		}
-		iBucle++;
-		iBucle = iBucle % resetBucle;
-		uint8_t boton=0;
-//		// tarea B  leer en el botoón y mostrar en el display
-		HAL_ADC_Start(&hadc1);
-//		// 2- Esperar a que esté disponible
-//		HAL_ADC_PollForConversion(&hadc1, 100);
-//		uint16_t sample = HAL_ADC_GetValue(&hadc1);
-//		// obtenenmos el valor del boton
-//		boton = getButton(sample);
-//		// vector para almacenar la cadena
-//		uint8_t str[20]; // porque 20
-
-		switch (boton) {
-		case 2: // Up
-			// valores maximos registrados
-			display_lcd(pressMax, tempMax, humMax);
-			break;
-		case 3: //down
-			//valores minimos
-			display_lcd(pressMin, tempMin, humMin);
-			break;
-	case 4: // left
-		// medios
-		display_lcd(pressAVG, tempAVG, humAVG);
-
-				break;
-	case 1: // right
-		//reset de todos
-			iBucle = 0;
-			// se resetea todo en el siguiente ciclo
-			display_lcd(0, 0, 0);
-				break;
-		default:		// select  y ninguno
-			display_lcd(press, temp, hum);
-			break;
-		}
-
-// Tarea C retraso temporal
-		HAL_Delay(100);
-		//HAL_UART_Transmit(&huart1, "hola\n\r",6, 1000);
-		printf("Pres:%.1hfPA T:%1fC H:%.1f%% B: %d\r\n",press,temp,hum,boton);
+  while (1)
+  {
+	  // 1- Lanzar muestra del adc.
+	  HAL_ADC_Start(&hadc1);
+	  // 2- Esperar a que esté disponible
+	  HAL_ADC_PollForConversion(&hadc1, 100);
+	  // 3- Leer muestra del registro de datos
+	  uint32_t sample =  HAL_ADC_GetValue(&hadc1);
+	  // 4-PResentar valores
+	  moveToXY(0, 0);
+	  lcd_print("Sp");
+	  writeIntegerToLCD(sample);
+	  moveToXY(1, 0);
+	  lcd_print("V");
+	  writeIntegerToLCD(voltajeConversor(sample));
+	  moveToXY(0,7);
+	  lcd_print("Id");
+	  writeIntegerToLCD(getButton(sample));
+	  // 4.1 MOstrar valor de la muestra
+	  // 4.3 Establecer que boton se ha pulsado y mostrar
+	  // espera o delay entrea interrupciones
+	  HAL_Delay(200); // mejor 200 para evitar fluctuaciones por rebotes
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
-	}
+  }
   /* USER CODE END 3 */
 }
 
@@ -871,13 +721,13 @@ static void MX_GPIO_Init(void)
   GPIO_InitStruct.Alternate = GPIO_AF7_USART2;
   HAL_GPIO_Init(GPIOD, &GPIO_InitStruct);
 
-  /*Configure GPIO pin : ARD_D14_Pin */
-  GPIO_InitStruct.Pin = ARD_D14_Pin;
+  /*Configure GPIO pins : ARD_D15_Pin ARD_D14_Pin */
+  GPIO_InitStruct.Pin = ARD_D15_Pin|ARD_D14_Pin;
   GPIO_InitStruct.Mode = GPIO_MODE_AF_OD;
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_VERY_HIGH;
   GPIO_InitStruct.Alternate = GPIO_AF4_I2C1;
-  HAL_GPIO_Init(ARD_D14_GPIO_Port, &GPIO_InitStruct);
+  HAL_GPIO_Init(GPIOB, &GPIO_InitStruct);
 
   /* EXTI interrupt init*/
   HAL_NVIC_SetPriority(EXTI9_5_IRQn, 0, 0);
@@ -891,40 +741,35 @@ static void MX_GPIO_Init(void)
 }
 
 /* USER CODE BEGIN 4 */
-
-//void ej1() {
-//
-//	// 1- Lanzar muestra del adc.
-//	HAL_ADC_Start(&hadc1);
-//	// 2- Esperar a que esté disponible
-//	HAL_ADC_PollForConversion(&hadc1, 100);
-//	// 3- Leer muestra del registro de datos
-//	uint32_t sample = HAL_ADC_GetValue(&hadc1);
-//	// 4-PResentar valores
-//	moveToXY(0, 0);
-//	lcd_print("Sp");
-//	writeIntegerToLCD(sample);
-//	moveToXY(1, 0);
-//	lcd_print("V");
-//	writeIntegerToLCD(voltajeConversor(sample));
-//	moveToXY(0, 7);
-//	lcd_print("Id");
-//	writeIntegerToLCD(getButton(sample));
-//	// 4.1 MOstrar valor de la muestra
-//	// 4.3 Establecer que boton se ha pulsado y mostrar
-//	// espera o delay entrea interrupciones
-//	// El delay mejor manejarlo en el bucle principal
-//	// HAL_Delay(200); // mejor 200 para evitar fluctuaciones por rebotes
-//}
-//int voltajeConversor(uint32_t sample){
-//return (sample*3300)/4095;
-//}
-void presion_en_display() {
-
+int voltajeConversor(uint32_t sample){
+return (sample*3300)/4095;
 }
-void humTemp_display() {
-
+int getButton(uint32_t sample){
+	// uint8_t getButton(uint32_t sample)
+	// uint8_t getButton(uint16_t sample)
+	//da errores si las declaramos de esta forma
+	uint8_t res = 0;
+	if(sample == 4095){
+		res = 0;
+	}else if (sample>= 700 && sample<= 720) {
+		// boton up
+		res = 2;
+	}else if (sample>= 1618 && sample<= 1630) {
+		//boton down
+		res =  3;
+	} else if(sample>= 2380 && sample<= 2400){
+		// boton left
+		res =  4;
+	}else if(sample>=3350 && sample <= 3380){
+		// select 3366
+		res =  5;
+	}else if(sample>=0 && sample <= 100){
+		//boton right 000
+		res = 1;
+	}
+	return res;
 }
+
 /* USER CODE END 4 */
 
 /**
@@ -934,10 +779,11 @@ void humTemp_display() {
 void Error_Handler(void)
 {
   /* USER CODE BEGIN Error_Handler_Debug */
-	/* User can add his own implementation to report the HAL error return state */
-	__disable_irq();
-	while (1) {
-	}
+  /* User can add his own implementation to report the HAL error return state */
+  __disable_irq();
+  while (1)
+  {
+  }
   /* USER CODE END Error_Handler_Debug */
 }
 

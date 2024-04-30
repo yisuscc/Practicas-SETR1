@@ -61,7 +61,17 @@ UART_HandleTypeDef huart3;
 PCD_HandleTypeDef hpcd_USB_OTG_FS;
 
 /* USER CODE BEGIN PV */
-
+#ifdef __GNUC__
+/* With GCC/RAISONANCE, small printf (option LD Linker->Libraries->Small printf
+set to 'Yes') calls __io_putchar() */
+#define PUTCHAR_PROTOTYPE int __io_putchar(int ch)
+#else
+#define PUTCHAR_PROTOTYPE int fputc(int ch, FILE *f)
+#endif /* __GNUC__ */
+PUTCHAR_PROTOTYPE{
+HAL_UART_Transmit(&huart1,(uint8_t *) &ch,1,2);
+return ch;
+}
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -184,7 +194,7 @@ int main(void)
 		temp = aux.temp;
 		hum = aux.hum;
 		// formateamos y enviamos
-	  sprintf(str,"Pres:%.1hfPA T:%1fC H:%.1f%% B: %d\r\n",press,temp,hum,boton);
+	  printf("Pres:%.1hfPA T:%1fC H:%.1f%% B: %d\r\n",press,temp,hum,boton);
 	  HAL_UART_Transmit(&huart1, str, strlen(str), 1000);
 	  // esperamos
 	  	  HAL_Delay(500);
