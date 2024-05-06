@@ -7,3 +7,140 @@
 2024-05-06 11:51:18,967 [INFO] ApiDb:452 - User favorites MCUs=[]
 2024-05-06 11:51:18,968 [INFO] ApiDb:448 - Save user favorites file C:\Users\jesus/.stm32cubeide/favorites.boards.txt: 1 item(s)
 2024-05-06 11:51:18,968 [INFO] ApiDb:452 - User favorites Boards=[B-L475E-IOT01A2]
+2024-05-06 11:58:26,200 [INFO] NvicIntPanel:101 - NVIC parent = com.st.microxplorer.plugins.ip.nvic.MultiNvicIntPanel[,0,0,450x126,layout=javax.swing.BoxLayout,alignmentX=0.0,alignmentY=0.0,border=,flags=9,maximumSize=,minimumSize=,preferredSize=]
+2024-05-06 11:58:27,304 [INFO] NvicIntPanel:101 - NVIC parent = com.st.microxplorer.plugins.ip.nvic.MultiNvicIntPanel[,0,0,0x0,invalid,layout=javax.swing.BoxLayout,alignmentX=0.0,alignmentY=0.0,border=,flags=9,maximumSize=,minimumSize=,preferredSize=]
+2024-05-06 11:58:27,449 [INFO] NvicIntPanel:101 - NVIC parent = com.st.microxplorer.plugins.ip.nvic.MultiNvicIntPanel[,0,0,0x0,invalid,layout=javax.swing.BoxLayout,alignmentX=0.0,alignmentY=0.0,border=,flags=9,maximumSize=,minimumSize=,preferredSize=]
+2024-05-06 12:05:19,456 [INFO] UtilMem:75 - End SaveConfig() Used Memory: 752556928 Bytes (1073741824)
+2024-05-06 12:05:21,087 [INFO] UtilMem:75 - End SaveConfig() Used Memory: 673877288 Bytes (1073741824)
+2024-05-06 12:05:23,239 [INFO] UtilMem:75 - End SaveConfig() Used Memory: 792888616 Bytes (1073741824)
+2024-05-06 12:05:23,593 [INFO] BlockDiagram:2759 - set Specific Code input for plugin: SPI
+2024-05-06 12:05:23,593 [INFO] BlockDiagram:2759 - set Specific Code input for plugin: DFSDM
+2024-05-06 12:05:23,594 [INFO] BlockDiagram:2759 - set Specific Code input for plugin: USB_DEVICE
+2024-05-06 12:05:23,594 [INFO] BlockDiagram:2759 - set Specific Code input for plugin: SYS
+2024-05-06 12:05:23,594 [INFO] BlockDiagram:2759 - set Specific Code input for plugin: RCC
+2024-05-06 12:05:23,594 [INFO] BlockDiagram:2759 - set Specific Code input for plugin: I2C
+2024-05-06 12:05:23,594 [INFO] BlockDiagram:2759 - set Specific Code input for plugin: USB_OTG_FS
+2024-05-06 12:05:23,594 [INFO] BlockDiagram:2759 - set Specific Code input for plugin: NVIC
+2024-05-06 12:05:23,594 [INFO] BlockDiagram:2759 - set Specific Code input for plugin: USART
+2024-05-06 12:05:23,594 [INFO] BlockDiagram:2759 - set Specific Code input for plugin: USART
+2024-05-06 12:05:23,595 [INFO] BlockDiagram:2759 - set Specific Code input for plugin: GPIO
+2024-05-06 12:05:23,595 [INFO] BlockDiagram:2759 - set Specific Code input for plugin: QUADSPI
+2024-05-06 12:05:23,598 [INFO] CodeGenerator:799 - code generatio: config db path: C:\ST\STM32CubeIDE_1.13.0\STM32CubeIDE\plugins\com.st.stm32cube.common.mx_6.9.0.202307051724\\db\
+2024-05-06 12:05:23,916 [INFO] CodeEngine:255 - oldGeneratedFile, C:\Users\jesus\Documents\SETR1ws\Practicas-SETR1\P6_Fase2_3Intento\MXTmpFiles\license.tmp_save
+2024-05-06 12:05:24,045 [INFO] CodeEngine:279 - Generated code: C:\Users\jesus\Documents\SETR1ws\Practicas-SETR1\P6_Fase2_3Intento\MXTmpFiles\license.tmp
+2024-05-06 12:05:24,368 [INFO] CodeEngine:255 - oldGeneratedFile, C:\Users\jesus\Documents\SETR1ws\Practicas-SETR1\P6_Fase2_3Intento\MXTmpFiles\gpio.tmp_save
+2024-05-06 12:05:24,525 [INFO] CodeEngine:279 - Generated code: C:\Users\jesus\Documents\SETR1ws\Practicas-SETR1\P6_Fase2_3Intento\MXTmpFiles\gpio.tmp
+2024-05-06 12:05:25,051 [WARN] IPConfigManager:2937 - Warning: the RefConfig PWREx_EnableUSBVoltageDetector is not available in your config.xml file
+2024-05-06 12:05:25,067 [INFO] CodeEngine:255 - oldGeneratedFile, C:\Users\jesus\Documents\SETR1ws\Practicas-SETR1\P6_Fase2_3Intento\MXTmpFiles\usb_otg_fs_vars.tmp_save
+2024-05-06 12:05:25,156 [INFO] CodeEngine:279 - Generated code: C:\Users\jesus\Documents\SETR1ws\Practicas-SETR1\P6_Fase2_3Intento\MXTmpFiles\usb_otg_fs_vars.tmp
+2024-05-06 12:05:25,166 [INFO] CodeEngine:255 - oldGeneratedFile, C:\Users\jesus\Documents\SETR1ws\Practicas-SETR1\P6_Fase2_3Intento\MXTmpFiles\usb_otg_fs_inc.tmp_save
+2024-05-06 12:05:25,235 [INFO] CodeEngine:279 - Generated code: C:\Users\jesus\Documents\SETR1ws\Practicas-SETR1\P6_Fase2_3Intento\MXTmpFiles\usb_otg_fs_inc.tmp
+2024-05-06 12:05:25,255 [INFO] CodeEngine:255 - oldGeneratedFile, C:\Users\jesus\Documents\SETR1ws\Practicas-SETR1\P6_Fase2_3Intento\MXTmpFiles\usb_otg_fs_HalInit.tmp_save
+2024-05-06 12:05:25,356 [INFO] CodeEngine:279 - Generated code: C:\Users\jesus\Documents\SETR1ws\Practicas-SETR1\P6_Fase2_3Intento\MXTmpFiles\usb_otg_fs_HalInit.tmp
+2024-05-06 12:05:25,371 [INFO] CodeEngine:255 - oldGeneratedFile, C:\Users\jesus\Documents\SETR1ws\Practicas-SETR1\P6_Fase2_3Intento\MXTmpFiles\usb_otg_fs_Msp.tmp_save
+2024-05-06 12:05:25,483 [INFO] CodeEngine:279 - Generated code: C:\Users\jesus\Documents\SETR1ws\Practicas-SETR1\P6_Fase2_3Intento\MXTmpFiles\usb_otg_fs_Msp.tmp
+2024-05-06 12:05:27,210 [INFO] Middleware:1439 - No code input for Bsp Dependency
+2024-05-06 12:05:27,223 [INFO] Middleware:1439 - No code input for Bsp Dependency
+2024-05-06 12:05:27,241 [INFO] CodeEngine:255 - oldGeneratedFile, C:\Users\jesus\Documents\SETR1ws\Practicas-SETR1\P6_Fase2_3Intento\USB_DEVICE\App\usb_device.c_save
+2024-05-06 12:05:27,333 [INFO] CodeEngine:279 - Generated code: C:\Users\jesus\Documents\SETR1ws\Practicas-SETR1\P6_Fase2_3Intento\USB_DEVICE\App\usb_device.c
+2024-05-06 12:05:27,344 [INFO] CodeEngine:255 - oldGeneratedFile, C:\Users\jesus\Documents\SETR1ws\Practicas-SETR1\P6_Fase2_3Intento\USB_DEVICE\App\usb_device.h_save
+2024-05-06 12:05:27,412 [INFO] CodeEngine:279 - Generated code: C:\Users\jesus\Documents\SETR1ws\Practicas-SETR1\P6_Fase2_3Intento\USB_DEVICE\App\usb_device.h
+2024-05-06 12:05:27,422 [INFO] CodeEngine:255 - oldGeneratedFile, C:\Users\jesus\Documents\SETR1ws\Practicas-SETR1\P6_Fase2_3Intento\USB_DEVICE\Target\usbd_conf.h_save
+2024-05-06 12:05:27,496 [INFO] CodeEngine:279 - Generated code: C:\Users\jesus\Documents\SETR1ws\Practicas-SETR1\P6_Fase2_3Intento\USB_DEVICE\Target\usbd_conf.h
+2024-05-06 12:05:27,508 [INFO] CodeEngine:255 - oldGeneratedFile, C:\Users\jesus\Documents\SETR1ws\Practicas-SETR1\P6_Fase2_3Intento\USB_DEVICE\Target\usbd_conf.c_save
+2024-05-06 12:05:27,614 [INFO] CodeEngine:279 - Generated code: C:\Users\jesus\Documents\SETR1ws\Practicas-SETR1\P6_Fase2_3Intento\USB_DEVICE\Target\usbd_conf.c
+2024-05-06 12:05:27,641 [INFO] CodeEngine:255 - oldGeneratedFile, C:\Users\jesus\Documents\SETR1ws\Practicas-SETR1\P6_Fase2_3Intento\USB_DEVICE\App\usbd_desc.h_save
+2024-05-06 12:05:27,717 [INFO] CodeEngine:279 - Generated code: C:\Users\jesus\Documents\SETR1ws\Practicas-SETR1\P6_Fase2_3Intento\USB_DEVICE\App\usbd_desc.h
+2024-05-06 12:05:27,731 [INFO] CodeEngine:255 - oldGeneratedFile, C:\Users\jesus\Documents\SETR1ws\Practicas-SETR1\P6_Fase2_3Intento\USB_DEVICE\App\usbd_desc.c_save
+2024-05-06 12:05:27,817 [INFO] CodeEngine:279 - Generated code: C:\Users\jesus\Documents\SETR1ws\Practicas-SETR1\P6_Fase2_3Intento\USB_DEVICE\App\usbd_desc.c
+2024-05-06 12:05:27,838 [INFO] CodeEngine:255 - oldGeneratedFile, C:\Users\jesus\Documents\SETR1ws\Practicas-SETR1\P6_Fase2_3Intento\USB_DEVICE\App\usbd_custom_hid_if.h_save
+2024-05-06 12:05:27,938 [INFO] CodeEngine:279 - Generated code: C:\Users\jesus\Documents\SETR1ws\Practicas-SETR1\P6_Fase2_3Intento\USB_DEVICE\App\usbd_custom_hid_if.h
+2024-05-06 12:05:27,952 [INFO] CodeEngine:255 - oldGeneratedFile, C:\Users\jesus\Documents\SETR1ws\Practicas-SETR1\P6_Fase2_3Intento\USB_DEVICE\App\usbd_custom_hid_if.c_save
+2024-05-06 12:05:28,024 [INFO] CodeEngine:279 - Generated code: C:\Users\jesus\Documents\SETR1ws\Practicas-SETR1\P6_Fase2_3Intento\USB_DEVICE\App\usbd_custom_hid_if.c
+2024-05-06 12:05:28,048 [INFO] CodeEngine:255 - oldGeneratedFile, C:\Users\jesus\Documents\SETR1ws\Practicas-SETR1\P6_Fase2_3Intento\Core\Src\stm32l4xx_it.c_save
+2024-05-06 12:05:28,215 [INFO] CodeEngine:279 - Generated code: C:\Users\jesus\Documents\SETR1ws\Practicas-SETR1\P6_Fase2_3Intento\Core\Src\stm32l4xx_it.c
+2024-05-06 12:05:28,223 [INFO] CodeEngine:255 - oldGeneratedFile, C:\Users\jesus\Documents\SETR1ws\Practicas-SETR1\P6_Fase2_3Intento\Core\Inc\stm32l4xx_it.h_save
+2024-05-06 12:05:28,290 [INFO] CodeEngine:279 - Generated code: C:\Users\jesus\Documents\SETR1ws\Practicas-SETR1\P6_Fase2_3Intento\Core\Inc\stm32l4xx_it.h
+2024-05-06 12:05:28,312 [INFO] CodeEngine:255 - oldGeneratedFile, C:\Users\jesus\Documents\SETR1ws\Practicas-SETR1\P6_Fase2_3Intento\Core\Src\stm32l4xx_hal_msp.c_save
+2024-05-06 12:05:28,434 [INFO] CodeEngine:279 - Generated code: C:\Users\jesus\Documents\SETR1ws\Practicas-SETR1\P6_Fase2_3Intento\Core\Src\stm32l4xx_hal_msp.c
+2024-05-06 12:05:28,444 [INFO] CodeEngine:255 - oldGeneratedFile, C:\Users\jesus\Documents\SETR1ws\Practicas-SETR1\P6_Fase2_3Intento\MXTmpFiles\system.tmp_save
+2024-05-06 12:05:28,498 [INFO] CodeEngine:279 - Generated code: C:\Users\jesus\Documents\SETR1ws\Practicas-SETR1\P6_Fase2_3Intento\MXTmpFiles\system.tmp
+2024-05-06 12:05:28,517 [INFO] CodeEngine:311 - oldGeneratedFile, C:\Users\jesus\Documents\SETR1ws\Practicas-SETR1\P6_Fase2_3Intento\Core\Inc\stm32l4xx_hal_conf.h_save
+2024-05-06 12:05:28,593 [INFO] CodeEngine:335 - Generated code: C:\Users\jesus\Documents\SETR1ws\Practicas-SETR1\P6_Fase2_3Intento\Core\Inc\stm32l4xx_hal_conf.h
+2024-05-06 12:05:28,637 [INFO] CodeEngine:255 - oldGeneratedFile, C:\Users\jesus\Documents\SETR1ws\Practicas-SETR1\P6_Fase2_3Intento\Core\Inc\main.h_save
+2024-05-06 12:05:28,714 [INFO] CodeEngine:279 - Generated code: C:\Users\jesus\Documents\SETR1ws\Practicas-SETR1\P6_Fase2_3Intento\Core\Inc\main.h
+2024-05-06 12:05:28,725 [INFO] CodeEngine:255 - oldGeneratedFile, C:\Users\jesus\Documents\SETR1ws\Practicas-SETR1\P6_Fase2_3Intento\Core\Src\main.c_save
+2024-05-06 12:05:28,846 [INFO] CodeEngine:279 - Generated code: C:\Users\jesus\Documents\SETR1ws\Practicas-SETR1\P6_Fase2_3Intento\Core\Src\main.c
+2024-05-06 12:05:29,594 [INFO] ProjectBuilder:3064 - Time for Copy HAL[1] : 321mS.
+2024-05-06 12:05:29,602 [INFO] ProjectBuilder:4404 - Project Generator version: 4.1.0
+2024-05-06 12:05:29,890 [INFO] ConfigFileManager:1457 - The Die is : DIE415
+2024-05-06 12:05:31,753 [INFO] ProjectBuilder:4626 - Time for Generating toolchain IDE Files: 2151mS.
+2024-05-06 12:05:31,754 [INFO] ProjectBuilder:2935 - Time for Copy CMSIS : 1mS.
+2024-05-06 12:05:31,760 [INFO] ProjectBuilder:2935 - Time for Copy CMSIS : 0mS.
+2024-05-06 12:06:43,920 [INFO] UtilMem:75 - End SaveConfig() Used Memory: 736720512 Bytes (1073741824)
+2024-05-06 12:06:45,471 [INFO] UtilMem:75 - End SaveConfig() Used Memory: 757692032 Bytes (1073741824)
+2024-05-06 12:06:47,676 [INFO] UtilMem:75 - End SaveConfig() Used Memory: 791768704 Bytes (1073741824)
+2024-05-06 12:06:48,040 [INFO] BlockDiagram:2759 - set Specific Code input for plugin: SPI
+2024-05-06 12:06:48,040 [INFO] BlockDiagram:2759 - set Specific Code input for plugin: DFSDM
+2024-05-06 12:06:48,040 [INFO] BlockDiagram:2759 - set Specific Code input for plugin: USB_DEVICE
+2024-05-06 12:06:48,040 [INFO] BlockDiagram:2759 - set Specific Code input for plugin: SYS
+2024-05-06 12:06:48,040 [INFO] BlockDiagram:2759 - set Specific Code input for plugin: RCC
+2024-05-06 12:06:48,040 [INFO] BlockDiagram:2759 - set Specific Code input for plugin: I2C
+2024-05-06 12:06:48,040 [INFO] BlockDiagram:2759 - set Specific Code input for plugin: USB_OTG_FS
+2024-05-06 12:06:48,040 [INFO] BlockDiagram:2759 - set Specific Code input for plugin: NVIC
+2024-05-06 12:06:48,040 [INFO] BlockDiagram:2759 - set Specific Code input for plugin: USART
+2024-05-06 12:06:48,040 [INFO] BlockDiagram:2759 - set Specific Code input for plugin: USART
+2024-05-06 12:06:48,041 [INFO] BlockDiagram:2759 - set Specific Code input for plugin: GPIO
+2024-05-06 12:06:48,041 [INFO] BlockDiagram:2759 - set Specific Code input for plugin: QUADSPI
+2024-05-06 12:06:48,042 [INFO] CodeGenerator:799 - code generatio: config db path: C:\ST\STM32CubeIDE_1.13.0\STM32CubeIDE\plugins\com.st.stm32cube.common.mx_6.9.0.202307051724\\db\
+2024-05-06 12:06:48,320 [INFO] CodeEngine:255 - oldGeneratedFile, C:\Users\jesus\Documents\SETR1ws\Practicas-SETR1\P6_Fase2_3Intento\MXTmpFiles\license.tmp_save
+2024-05-06 12:06:48,452 [INFO] CodeEngine:279 - Generated code: C:\Users\jesus\Documents\SETR1ws\Practicas-SETR1\P6_Fase2_3Intento\MXTmpFiles\license.tmp
+2024-05-06 12:06:48,703 [INFO] CodeEngine:255 - oldGeneratedFile, C:\Users\jesus\Documents\SETR1ws\Practicas-SETR1\P6_Fase2_3Intento\MXTmpFiles\gpio.tmp_save
+2024-05-06 12:06:48,794 [INFO] CodeEngine:279 - Generated code: C:\Users\jesus\Documents\SETR1ws\Practicas-SETR1\P6_Fase2_3Intento\MXTmpFiles\gpio.tmp
+2024-05-06 12:06:49,286 [WARN] IPConfigManager:2937 - Warning: the RefConfig PWREx_EnableUSBVoltageDetector is not available in your config.xml file
+2024-05-06 12:06:49,296 [INFO] CodeEngine:255 - oldGeneratedFile, C:\Users\jesus\Documents\SETR1ws\Practicas-SETR1\P6_Fase2_3Intento\MXTmpFiles\usb_otg_fs_vars.tmp_save
+2024-05-06 12:06:49,395 [INFO] CodeEngine:279 - Generated code: C:\Users\jesus\Documents\SETR1ws\Practicas-SETR1\P6_Fase2_3Intento\MXTmpFiles\usb_otg_fs_vars.tmp
+2024-05-06 12:06:49,400 [INFO] CodeEngine:255 - oldGeneratedFile, C:\Users\jesus\Documents\SETR1ws\Practicas-SETR1\P6_Fase2_3Intento\MXTmpFiles\usb_otg_fs_inc.tmp_save
+2024-05-06 12:06:49,500 [INFO] CodeEngine:279 - Generated code: C:\Users\jesus\Documents\SETR1ws\Practicas-SETR1\P6_Fase2_3Intento\MXTmpFiles\usb_otg_fs_inc.tmp
+2024-05-06 12:06:49,506 [INFO] CodeEngine:255 - oldGeneratedFile, C:\Users\jesus\Documents\SETR1ws\Practicas-SETR1\P6_Fase2_3Intento\MXTmpFiles\usb_otg_fs_HalInit.tmp_save
+2024-05-06 12:06:49,591 [INFO] CodeEngine:279 - Generated code: C:\Users\jesus\Documents\SETR1ws\Practicas-SETR1\P6_Fase2_3Intento\MXTmpFiles\usb_otg_fs_HalInit.tmp
+2024-05-06 12:06:49,596 [INFO] CodeEngine:255 - oldGeneratedFile, C:\Users\jesus\Documents\SETR1ws\Practicas-SETR1\P6_Fase2_3Intento\MXTmpFiles\usb_otg_fs_Msp.tmp_save
+2024-05-06 12:06:49,681 [INFO] CodeEngine:279 - Generated code: C:\Users\jesus\Documents\SETR1ws\Practicas-SETR1\P6_Fase2_3Intento\MXTmpFiles\usb_otg_fs_Msp.tmp
+2024-05-06 12:06:51,547 [INFO] Middleware:1439 - No code input for Bsp Dependency
+2024-05-06 12:06:51,554 [INFO] Middleware:1439 - No code input for Bsp Dependency
+2024-05-06 12:06:51,572 [INFO] CodeEngine:255 - oldGeneratedFile, C:\Users\jesus\Documents\SETR1ws\Practicas-SETR1\P6_Fase2_3Intento\USB_DEVICE\App\usb_device.c_save
+2024-05-06 12:06:51,642 [INFO] CodeEngine:279 - Generated code: C:\Users\jesus\Documents\SETR1ws\Practicas-SETR1\P6_Fase2_3Intento\USB_DEVICE\App\usb_device.c
+2024-05-06 12:06:51,648 [INFO] CodeEngine:255 - oldGeneratedFile, C:\Users\jesus\Documents\SETR1ws\Practicas-SETR1\P6_Fase2_3Intento\USB_DEVICE\App\usb_device.h_save
+2024-05-06 12:06:51,699 [INFO] CodeEngine:279 - Generated code: C:\Users\jesus\Documents\SETR1ws\Practicas-SETR1\P6_Fase2_3Intento\USB_DEVICE\App\usb_device.h
+2024-05-06 12:06:51,705 [INFO] CodeEngine:255 - oldGeneratedFile, C:\Users\jesus\Documents\SETR1ws\Practicas-SETR1\P6_Fase2_3Intento\USB_DEVICE\Target\usbd_conf.h_save
+2024-05-06 12:06:51,775 [INFO] CodeEngine:279 - Generated code: C:\Users\jesus\Documents\SETR1ws\Practicas-SETR1\P6_Fase2_3Intento\USB_DEVICE\Target\usbd_conf.h
+2024-05-06 12:06:51,790 [INFO] CodeEngine:255 - oldGeneratedFile, C:\Users\jesus\Documents\SETR1ws\Practicas-SETR1\P6_Fase2_3Intento\USB_DEVICE\Target\usbd_conf.c_save
+2024-05-06 12:06:51,871 [INFO] CodeEngine:279 - Generated code: C:\Users\jesus\Documents\SETR1ws\Practicas-SETR1\P6_Fase2_3Intento\USB_DEVICE\Target\usbd_conf.c
+2024-05-06 12:06:51,880 [INFO] CodeEngine:255 - oldGeneratedFile, C:\Users\jesus\Documents\SETR1ws\Practicas-SETR1\P6_Fase2_3Intento\USB_DEVICE\App\usbd_desc.h_save
+2024-05-06 12:06:51,937 [INFO] CodeEngine:279 - Generated code: C:\Users\jesus\Documents\SETR1ws\Practicas-SETR1\P6_Fase2_3Intento\USB_DEVICE\App\usbd_desc.h
+2024-05-06 12:06:51,951 [INFO] CodeEngine:255 - oldGeneratedFile, C:\Users\jesus\Documents\SETR1ws\Practicas-SETR1\P6_Fase2_3Intento\USB_DEVICE\App\usbd_desc.c_save
+2024-05-06 12:06:52,025 [INFO] CodeEngine:279 - Generated code: C:\Users\jesus\Documents\SETR1ws\Practicas-SETR1\P6_Fase2_3Intento\USB_DEVICE\App\usbd_desc.c
+2024-05-06 12:06:52,033 [INFO] CodeEngine:255 - oldGeneratedFile, C:\Users\jesus\Documents\SETR1ws\Practicas-SETR1\P6_Fase2_3Intento\USB_DEVICE\App\usbd_custom_hid_if.h_save
+2024-05-06 12:06:52,091 [INFO] CodeEngine:279 - Generated code: C:\Users\jesus\Documents\SETR1ws\Practicas-SETR1\P6_Fase2_3Intento\USB_DEVICE\App\usbd_custom_hid_if.h
+2024-05-06 12:06:52,105 [INFO] CodeEngine:255 - oldGeneratedFile, C:\Users\jesus\Documents\SETR1ws\Practicas-SETR1\P6_Fase2_3Intento\USB_DEVICE\App\usbd_custom_hid_if.c_save
+2024-05-06 12:06:52,174 [INFO] CodeEngine:279 - Generated code: C:\Users\jesus\Documents\SETR1ws\Practicas-SETR1\P6_Fase2_3Intento\USB_DEVICE\App\usbd_custom_hid_if.c
+2024-05-06 12:06:52,203 [INFO] CodeEngine:255 - oldGeneratedFile, C:\Users\jesus\Documents\SETR1ws\Practicas-SETR1\P6_Fase2_3Intento\Core\Src\stm32l4xx_it.c_save
+2024-05-06 12:06:52,295 [INFO] CodeEngine:279 - Generated code: C:\Users\jesus\Documents\SETR1ws\Practicas-SETR1\P6_Fase2_3Intento\Core\Src\stm32l4xx_it.c
+2024-05-06 12:06:52,302 [INFO] CodeEngine:255 - oldGeneratedFile, C:\Users\jesus\Documents\SETR1ws\Practicas-SETR1\P6_Fase2_3Intento\Core\Inc\stm32l4xx_it.h_save
+2024-05-06 12:06:52,366 [INFO] CodeEngine:279 - Generated code: C:\Users\jesus\Documents\SETR1ws\Practicas-SETR1\P6_Fase2_3Intento\Core\Inc\stm32l4xx_it.h
+2024-05-06 12:06:52,389 [INFO] CodeEngine:255 - oldGeneratedFile, C:\Users\jesus\Documents\SETR1ws\Practicas-SETR1\P6_Fase2_3Intento\Core\Src\stm32l4xx_hal_msp.c_save
+2024-05-06 12:06:52,523 [INFO] CodeEngine:279 - Generated code: C:\Users\jesus\Documents\SETR1ws\Practicas-SETR1\P6_Fase2_3Intento\Core\Src\stm32l4xx_hal_msp.c
+2024-05-06 12:06:52,566 [INFO] CodeEngine:255 - oldGeneratedFile, C:\Users\jesus\Documents\SETR1ws\Practicas-SETR1\P6_Fase2_3Intento\MXTmpFiles\system.tmp_save
+2024-05-06 12:06:52,636 [INFO] CodeEngine:279 - Generated code: C:\Users\jesus\Documents\SETR1ws\Practicas-SETR1\P6_Fase2_3Intento\MXTmpFiles\system.tmp
+2024-05-06 12:06:52,659 [INFO] CodeEngine:311 - oldGeneratedFile, C:\Users\jesus\Documents\SETR1ws\Practicas-SETR1\P6_Fase2_3Intento\Core\Inc\stm32l4xx_hal_conf.h_save
+2024-05-06 12:06:52,752 [INFO] CodeEngine:335 - Generated code: C:\Users\jesus\Documents\SETR1ws\Practicas-SETR1\P6_Fase2_3Intento\Core\Inc\stm32l4xx_hal_conf.h
+2024-05-06 12:06:52,800 [INFO] CodeEngine:255 - oldGeneratedFile, C:\Users\jesus\Documents\SETR1ws\Practicas-SETR1\P6_Fase2_3Intento\Core\Inc\main.h_save
+2024-05-06 12:06:52,888 [INFO] CodeEngine:279 - Generated code: C:\Users\jesus\Documents\SETR1ws\Practicas-SETR1\P6_Fase2_3Intento\Core\Inc\main.h
+2024-05-06 12:06:52,902 [INFO] CodeEngine:255 - oldGeneratedFile, C:\Users\jesus\Documents\SETR1ws\Practicas-SETR1\P6_Fase2_3Intento\Core\Src\main.c_save
+2024-05-06 12:06:52,994 [INFO] CodeEngine:279 - Generated code: C:\Users\jesus\Documents\SETR1ws\Practicas-SETR1\P6_Fase2_3Intento\Core\Src\main.c
+2024-05-06 12:06:53,540 [INFO] ProjectBuilder:3064 - Time for Copy HAL[1] : 284mS.
+2024-05-06 12:06:53,547 [INFO] ProjectBuilder:4404 - Project Generator version: 4.1.0
+2024-05-06 12:06:53,876 [INFO] ConfigFileManager:1457 - The Die is : DIE415
+2024-05-06 12:06:55,395 [INFO] ProjectBuilder:4626 - Time for Generating toolchain IDE Files: 1848mS.
+2024-05-06 12:06:55,396 [INFO] ProjectBuilder:2935 - Time for Copy CMSIS : 1mS.
+2024-05-06 12:06:55,402 [INFO] ProjectBuilder:2935 - Time for Copy CMSIS : 0mS.

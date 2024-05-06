@@ -33,7 +33,8 @@ SP_DEVICE_INTERFACE_DATA infodisposi;
 PSP_DEVICE_INTERFACE_DETAIL_DATA infocamino;
 
 //suponemos que solo hay un dispositivo HID o que el nuestro es el primero 0
-int numlista=0;
+
+int numlista=5;
 
 unsigned long longitud=0,requerido;
 
@@ -76,7 +77,7 @@ if(resultado==0)
 printf("No conseguido camino\n");
 printf("%s \n", infocamino->DevicePath); //meramente informativo
 //abrimos el dispositivo
-handledisposi=CreateFile(infocamino->DevicePath,
+handledisposi=CreateFile("\\\\?\\HID#VID_0539&PID_575F#6&258708C5&0&0000#{4D1E55B2-F16F-11CF-88CB-001111000030}",
 							GENERIC_READ|GENERIC_WRITE,
 							 FILE_SHARE_READ|FILE_SHARE_WRITE,
 							 NULL,
@@ -91,14 +92,15 @@ else
 
 while(1)
 {
+	//alternar si queremos leer  en el dispo
+	//ReadFile(handledisposi,datos,7,&bytesleidos,NULL);
+	//printf("datos= %d,%d,%d,%d, %d\n",datos[0],datos[1],datos[2],datos[3],bytesleidos);
+	//si queremos enviar  al dispositivo 
+	datos[1]= getche();
+	datos[0]=0;
+resultado=	WriteFile(handledisposi,datos,7,&bytesleidos,NULL);
 
-	ReadFile(handledisposi,datos,7,&bytesleidos,NULL);
-	printf("datos= %d,%d,%d,%d, %d\n",datos[0],datos[1],datos[2],datos[3],bytesleidos);
-
-	//datos[1]= getche();
-	//datos[0]=0;
-//resultado=	WriteFile(handledisposi,datos,6,&bytesleidos,NULL);
-//printf("datos= %d,%d,%d,%d, %d\n",datos[0],datos[1],datos[2],resultado,bytesleidos);
+printf("datos= %d,%d,%d,%d, %d\n",datos[0],datos[1],datos[2],resultado,bytesleidos);
 
   }	
 	

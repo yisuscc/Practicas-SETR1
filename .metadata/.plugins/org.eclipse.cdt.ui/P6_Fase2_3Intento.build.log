@@ -1,0 +1,21 @@
+16:22:54 **** Incremental Build of configuration Debug for project P6_Fase2_3Intento ****
+make -j12 all 
+arm-none-eabi-gcc "../Middlewares/ST/STM32_USB_Device_Library/Class/CustomHID/Src/usbd_customhid.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32L475xx -c -I../Core/Inc -I../Drivers/STM32L4xx_HAL_Driver/Inc -I../Drivers/STM32L4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32L4xx/Include -I../Drivers/CMSIS/Include -I../USB_DEVICE/App -I../USB_DEVICE/Target -I../Middlewares/ST/STM32_USB_Device_Library/Core/Inc -I../Middlewares/ST/STM32_USB_Device_Library/Class/CustomHID/Inc -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Middlewares/ST/STM32_USB_Device_Library/Class/CustomHID/Src/usbd_customhid.d" -MT"Middlewares/ST/STM32_USB_Device_Library/Class/CustomHID/Src/usbd_customhid.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Middlewares/ST/STM32_USB_Device_Library/Class/CustomHID/Src/usbd_customhid.o"
+../Middlewares/ST/STM32_USB_Device_Library/Class/CustomHID/Src/usbd_customhid.c: In function 'USBD_CUSTOM_HID_ReceivePacket':
+../Middlewares/ST/STM32_USB_Device_Library/Class/CustomHID/Src/usbd_customhid.c:711:34: warning: variable 'hhid' set but not used [-Wunused-but-set-variable]
+  711 |   USBD_CUSTOM_HID_HandleTypeDef *hhid;
+      |                                  ^~~~
+arm-none-eabi-gcc -o "P6_Fase2_3Intento.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\jesus\Documents\SETR1ws\Practicas-SETR1\P6_Fase2_3Intento\STM32L475VGTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="P6_Fase2_3Intento.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: P6_Fase2_3Intento.elf
+ 
+arm-none-eabi-size   P6_Fase2_3Intento.elf 
+arm-none-eabi-objdump -h -S  P6_Fase2_3Intento.elf  > "P6_Fase2_3Intento.list"
+   text	   data	    bss	    dec	    hex	filename
+  37588	    288	   4768	  42644	   a694	P6_Fase2_3Intento.elf
+Finished building: default.size.stdout
+ 
+Finished building: P6_Fase2_3Intento.list
+ 
+
+16:22:56 Build Finished. 0 errors, 1 warnings. (took 1s.454ms)
+
