@@ -1,0 +1,13 @@
+﻿cl : línea de comandos  warning D9035: La opción 'Gm' está desusada y se quitará en próximas versiones
+cl : línea de comandos  warning D9007: '/Gm' requiere '/Zi o /ZI'; opción omitida
+  StdAfx.cpp
+cl : línea de comandos  warning D9035: La opción 'Gm' está desusada y se quitará en próximas versiones
+cl : línea de comandos  warning D9007: '/Gm' requiere '/Zi o /ZI'; opción omitida
+  hidmio.cpp
+C:\Users\jesus\Documents\SETR1ws\Practicas-SETR1\hidsoftwarefase6\hid_host_pc\hidmiosoftwarehost\hidmio.cpp(102,13): warning C4244: 'inicializando': conversión de 'double' a 'float'; posible pérdida de datos
+  (compilando archivo de origen "/hidmio.cpp")
+  
+C:\Users\jesus\Documents\SETR1ws\Practicas-SETR1\hidsoftwarefase6\hid_host_pc\hidmiosoftwarehost\hidmio.cpp(103,14): warning C4244: 'inicializando': conversión de 'double' a 'float'; posible pérdida de datos
+  (compilando archivo de origen "/hidmio.cpp")
+  
+  hidmio.vcxproj -> C:\Users\jesus\Documents\SETR1ws\Practicas-SETR1\hidsoftwarefase6\hid_host_pc\hidmiosoftwarehost\Debug\hidmio.exe

@@ -1,0 +1,4 @@
+../Core/Src/HTS221.c:13:6:HTS221_Init	32	static
+../Core/Src/HTS221.c:36:13:HTS221_Start	32	static
+../Core/Src/HTS221.c:51:9:HTS221_Get_Temperature	64	static
+../Core/Src/HTS221.c:102:9:HTS221_Get_Humidity	56	static

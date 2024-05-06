@@ -23,6 +23,7 @@
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
 #include "hd44780.h"
+#include "HTS221.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -77,26 +78,7 @@ static void MX_TIM2_Init(void);
 extern USBD_HandleTypeDef hUsbDeviceFS;
 extern uint8_t miflag;
 
-void ini_acelerometro(){
 
-	uint8_t buffer[1];
-	// que metemos en el buffer
-	// pues los datos a escribir
-	buffer[0]= 0x40;
-	// debe escribir en la dirección del esclabo
-	// 0xD4
-	// el tamaño es de 8 byrtes
-	//creo que no hace falta meterle 1000 de timeaout
-	// ya qyue no hay que calentarlo
-	HAL_I2C_Mem_Write(&hi2c2, 0xD4, 0x10, I2C_MEMADD_SIZE_8BIT, buffer, 1, 100);
-}
-int16_t readAccel(uint8_t axis){
-	int16_t res = 0 ;
-	uint8_t buffer[2];
-	HAL_I2C_Mem_Read(&hi2c2, 0xD4, 0x28+2*axis, I2C_MEMADD_SIZE_8BIT, buffer,2, 100);
-	res = ((int16_t)(buffer[1]<<8)| buffer[0])*0.061;
-	return res;
-}
 /* USER CODE END 0 */
 
 /**
@@ -141,8 +123,8 @@ lcd_reset();
 lcd_display_settings(1,0,0);
 lcd_clear();
 HAL_GPIO_WritePin(Led_LCD_GPIO_Port, Led_LCD_Pin, 1);
-lcd_print("Fase5");
-ini_acelerometro();
+lcd_print("Fase6");
+
 HAL_Delay(5000);
 
 uint8_t dato[6];
@@ -150,21 +132,23 @@ USBD_LL_PrepareReceive(&hUsbDeviceFS, 1,dato, 6);
 uint8_t datoCiclo[6] = {115,101,116,114,0,0}; //setr ascii
 char str[1];
 int i;
-int16_t lecturaejeX;
-int16_t lecturaejeY;
+int16_t lecturaTemp;
+int16_t lecturaHum;
+HTS221_Init();
   /* USER CODE END 2 */
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
   while (1)
   {
- lecturaejeX = readAccel(0);
+HTS221_Get_Humidity(&lecturaHum);
+HTS221_Get_Temperature(&lecturaTemp);
 
-dato[0]= lecturaejeX;
-dato[1]= lecturaejeX>>8;
-lecturaejeY= readAccel(1);
-dato[2]= lecturaejeY;
-dato[3]= lecturaejeY>>8;
+dato[0]= lecturaHum;
+dato[1]= lecturaHum>>8;
+
+dato[2]= lecturaTemp;
+dato[3]= lecturaTemp>>8;
 
 
 
