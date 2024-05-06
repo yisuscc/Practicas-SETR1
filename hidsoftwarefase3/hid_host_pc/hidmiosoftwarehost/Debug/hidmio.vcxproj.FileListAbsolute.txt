@@ -1,0 +1,8 @@
+C:\setr1\hid_host_pc\hidmiosoftwarehost\Debug\hidmio.exe
+C:\setr1\hid_host_pc\hidmiosoftwarehost\Debug\hidmio.pdb
+C:\Users\GABRIELMSI\OneDrive - atc.us.es\setr1\hid_host_pc\hidmiosoftwarehost\Debug\hidmio.exe
+C:\Users\GABRIELMSI\OneDrive - atc.us.es\setr1\hid_host_pc\hidmiosoftwarehost\Debug\hidmio.pdb
+C:\cdtm2012\tm2009\setr2019\hid_host_pc\hidmiosoftwarehost\Debug\hidmio.exe
+C:\cdtm2012\tm2009\setr2019\hid_host_pc\hidmiosoftwarehost\Debug\hidmio.pdb
+C:\Users\jesus\Documents\SETR1ws\Practicas-SETR1\hidsoftware3intento\hid_host_pc\hidmiosoftwarehost\Debug\hidmio.exe
+C:\Users\jesus\Documents\SETR1ws\Practicas-SETR1\hidsoftwarefase3\hid_host_pc\hidmiosoftwarehost\Debug\hidmio.exe

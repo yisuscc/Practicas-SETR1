@@ -1,0 +1,24 @@
+17:05:46 **** Incremental Build of configuration Debug for project P6_Fase3_2intento ****
+make -j12 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32L475xx -c -I../Core/Inc -I../Drivers/STM32L4xx_HAL_Driver/Inc -I../Drivers/STM32L4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32L4xx/Include -I../Drivers/CMSIS/Include -I../USB_DEVICE/App -I../USB_DEVICE/Target -I../Middlewares/ST/STM32_USB_Device_Library/Core/Inc -I../Middlewares/ST/STM32_USB_Device_Library/Class/CustomHID/Inc -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c: In function 'main':
+../Core/Src/main.c:119:1: warning: implicit declaration of function 'USBD_LL_PrepareReceive' [-Wimplicit-function-declaration]
+  119 | USBD_LL_PrepareReceive(&hUsbDeviceFS, 1, dato, 6);
+      | ^~~~~~~~~~~~~~~~~~~~~~
+../Core/Src/main.c:138:18: warning: implicit declaration of function 'USBD_CUSTOM_HID_SendReport_FS' [-Wimplicit-function-declaration]
+  138 |                  USBD_CUSTOM_HID_SendReport_FS(dato, 6);
+      |                  ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+arm-none-eabi-gcc -o "P6_Fase3_2intento.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\jesus\Documents\SETR1ws\Practicas-SETR1\P6_Fase3_2intento\STM32L475VGTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="P6_Fase3_2intento.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: P6_Fase3_2intento.elf
+ 
+arm-none-eabi-size   P6_Fase3_2intento.elf 
+arm-none-eabi-objdump -h -S  P6_Fase3_2intento.elf  > "P6_Fase3_2intento.list"
+   text	   data	    bss	    dec	    hex	filename
+  38464	    288	   4776	  43528	   aa08	P6_Fase3_2intento.elf
+Finished building: default.size.stdout
+ 
+Finished building: P6_Fase3_2intento.list
+ 
+
+17:05:48 Build Finished. 0 errors, 2 warnings. (took 1s.395ms)
+
