@@ -1,1 +1,4 @@
-﻿  hidmio.vcxproj -> C:\Users\jesus\Documents\SETR1ws\Practicas-SETR1\hidsoftwarefase3\hid_host_pc\hidmiosoftwarehost\Debug\hidmio.exe
+﻿cl : línea de comandos  warning D9035: La opción 'Gm' está desusada y se quitará en próximas versiones
+cl : línea de comandos  warning D9007: '/Gm' requiere '/Zi o /ZI'; opción omitida
+  hidmio.cpp
+  hidmio.vcxproj -> C:\Users\jesus\Documents\SETR1ws\Practicas-SETR1\hidsoftwarefase3\hid_host_pc\hidmiosoftwarehost\Debug\hidmio.exe

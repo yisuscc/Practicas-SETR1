@@ -98,7 +98,8 @@ while(1)
 	//ReadFile(handledisposi,datos,7,&bytesleidos,NULL);
 	//printf("datos= %d,%d,%d,%d, %d\n",datos[0],datos[1],datos[2],datos[3],bytesleidos);
 	//si queremos enviar  al dispositivo 
-	datos[1]= getche();
+	float ang = 90;
+	datos[1]= 90;
 	datos[0]=0;
 resultado=	WriteFile(handledisposi,datos,7,&bytesleidos,NULL);
 

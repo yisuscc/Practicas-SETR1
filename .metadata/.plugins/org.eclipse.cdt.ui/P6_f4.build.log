@@ -1,0 +1,33 @@
+19:44:52 **** Incremental Build of configuration Debug for project P6_f4 ****
+make -j12 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32L475xx -c -I../Core/Inc -I../Drivers/STM32L4xx_HAL_Driver/Inc -I../Drivers/STM32L4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32L4xx/Include -I../Drivers/CMSIS/Include -I../USB_DEVICE/App -I../USB_DEVICE/Target -I../Middlewares/ST/STM32_USB_Device_Library/Core/Inc -I../Middlewares/ST/STM32_USB_Device_Library/Class/CustomHID/Inc -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c: In function 'main':
+../Core/Src/main.c:133:1: warning: implicit declaration of function 'USBD_LL_PrepareReceive' [-Wimplicit-function-declaration]
+  133 | USBD_LL_PrepareReceive(&hUsbDeviceFS, 1,dato, 6);
+      | ^~~~~~~~~~~~~~~~~~~~~~
+../Core/Src/main.c:160:1: warning: implicit declaration of function 'USBD_CUSTOM_HID_SendReport_FS' [-Wimplicit-function-declaration]
+  160 | USBD_CUSTOM_HID_SendReport_FS(datoCiclo,6);
+      | ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+../Core/Src/main.c:136:5: warning: unused variable 'i' [-Wunused-variable]
+  136 | int i;
+      |     ^
+../Core/Src/main.c:155:23: warning: 'Ang: ' directive writing 5 bytes into a region of size 1 [-Wformat-overflow=]
+  155 |         sprintf(str,"Ang: %.1f",ang);
+      |                      ~^~~~
+../Core/Src/main.c:155:9: note: 'sprintf' output between 9 and 318 bytes into a destination of size 1
+  155 |         sprintf(str,"Ang: %.1f",ang);
+      |         ^~~~~~~~~~~~~~~~~~~~~~~~~~~~
+arm-none-eabi-gcc -o "P6_f4.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\jesus\Documents\SETR1ws\Practicas-SETR1\P6_f4\STM32L475VGTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="P6_f4.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -u _printf_float -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: P6_f4.elf
+ 
+arm-none-eabi-size   P6_f4.elf 
+arm-none-eabi-objdump -h -S  P6_f4.elf  > "P6_f4.list"
+   text	   data	    bss	    dec	    hex	filename
+  56996	    744	   5192	  62932	   f5d4	P6_f4.elf
+Finished building: default.size.stdout
+ 
+Finished building: P6_f4.list
+ 
+
+19:44:54 Build Finished. 0 errors, 4 warnings. (took 1s.454ms)
+

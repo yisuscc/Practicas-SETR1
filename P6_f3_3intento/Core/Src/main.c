@@ -132,17 +132,19 @@ int i;
   {
 if(miflag==1){
 	USBD_LL_PrepareReceive(&hUsbDeviceFS, 1,dato, 6);
+	miflag=0; //bajamos la bandera
 	if(dato[0]== 115){
 		//letra s minucula
 		HAL_GPIO_WritePin(LED2_GPIO_Port, LED2_Pin, 1);
 	}else if(dato[0]==114){
 		//letra r
-		HAL_GPIO_WritePin(LED2_GPIO_Port, LED2_Pin, 1);
+		HAL_GPIO_WritePin(LED2_GPIO_Port, LED2_Pin, 0);
 	}
 	//siempre imprimimos el caracter en la pantalla
 	lcd_clear();
 	lcd_print("letra");
 	str[0]= (char) dato[0];
+	moveToXY(1, 1);
 	lcd_print(str);
 
 }
