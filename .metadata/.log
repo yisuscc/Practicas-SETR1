@@ -876,3 +876,6 @@ Command-line arguments:  -os win32 -ws win32 -arch x86_64
 
 !ENTRY com.st.stm32cube.ide.mcu.ide 1 1 2024-05-04 16:37:54.774
 !MESSAGE Started RMI Server, listening on port 41337
+
+!ENTRY org.eclipse.cdt.core 1 0 2024-05-06 11:51:22.202
+!MESSAGE Indexed 'P6_Fase2_3Intento' (32 sources, 91 headers) in 4.64 sec: 8,334 declarations; 58,690 references; 0 unresolved inclusions; 1 syntax errors; 2 unresolved names (0.003%)

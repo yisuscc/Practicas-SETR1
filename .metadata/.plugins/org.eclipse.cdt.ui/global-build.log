@@ -1048,3 +1048,17 @@ Finished building: default.size.stdout
  
 Finished building: Practica6Fase1A.list
  
+11:38:10 **** Build of configuration Debug for project P6Fase2_2Intento ****
+make -j12 all 
+arm-none-eabi-size   P6Fase2_2Intento.elf 
+   text	   data	    bss	    dec	    hex	filename
+  37360	    288	   4768	  42416	   a5b0	P6Fase2_2Intento.elf
+Finished building: default.size.stdout
+ 
+11:38:18 **** Incremental Build of configuration Debug for project P6Fase2_2Intento ****
+make -j12 all 
+arm-none-eabi-size   P6Fase2_2Intento.elf 
+   text	   data	    bss	    dec	    hex	filename
+  37360	    288	   4768	  42416	   a5b0	P6Fase2_2Intento.elf
+Finished building: default.size.stdout
+ 

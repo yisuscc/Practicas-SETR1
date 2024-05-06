@@ -1,0 +1,4 @@
+﻿cl : línea de comandos warning D9035: La opción 'Gm' está desusada y se quitará en próximas versiones
+cl : línea de comandos warning D9007: '/Gm' requiere '/Zi o /ZI'; opción omitida
+  hidmio.cpp
+  hidmio.vcxproj -> C:\cdtm2012\tm2009\setr2019\hid_host_pc\hidmiosoftwarehost\.\Debug\hidmio.exe

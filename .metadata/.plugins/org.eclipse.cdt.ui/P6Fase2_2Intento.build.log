@@ -1,4 +1,4 @@
-14:49:51 **** Incremental Build of configuration Debug for project P6Fase2_2Intento ****
+11:38:18 **** Incremental Build of configuration Debug for project P6Fase2_2Intento ****
 make -j12 all 
 arm-none-eabi-size   P6Fase2_2Intento.elf 
    text	   data	    bss	    dec	    hex	filename
@@ -6,5 +6,5 @@ arm-none-eabi-size   P6Fase2_2Intento.elf
 Finished building: default.size.stdout
  
 
-14:49:51 Build Finished. 0 errors, 0 warnings. (took 367ms)
+11:38:19 Build Finished. 0 errors, 0 warnings. (took 468ms)
 

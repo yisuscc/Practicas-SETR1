@@ -33,7 +33,7 @@ SP_DEVICE_INTERFACE_DATA infodisposi;
 PSP_DEVICE_INTERFACE_DETAIL_DATA infocamino;
 
 //suponemos que solo hay un dispositivo HID o que el nuestro es el primero 0
-int numlista=0;
+int numlista = 0;
 
 unsigned long longitud=0,requerido;
 
