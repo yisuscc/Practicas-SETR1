@@ -843,3 +843,36 @@ Reason: (5) Unknown MCU found on target.
 !SUBENTRY 2 com.st.stm32cube.ide.mcu.debug.stlink 4 0 2024-04-30 14:46:58.757
 !MESSAGE Error in initializing ST-LINK device.
 Reason: (5) Unknown MCU found on target.
+!SESSION 2024-04-30 16:58:36.516 -----------------------------------------------
+eclipse.buildId=Version 1.13.0
+java.version=17.0.6
+java.vendor=Eclipse Adoptium
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=es_ES
+Command-line arguments:  -os win32 -ws win32 -arch x86_64
+
+!ENTRY com.st.stm32cube.ide.mcu.informationcenter 4 4 2024-04-30 16:59:12.446
+!MESSAGE CubeMX plugin appears to be active, Log4j initialization might be too late.
+
+!ENTRY com.st.stm32cube.ide.mcu.informationcenter 1 1 2024-04-30 16:59:12.467
+!MESSAGE Log4j2 initialized with config file C:\Users\jesus\Documents\SETR1ws\Practicas-SETR1\.metadata\.log4j2.xml
+
+!ENTRY com.st.stm32cube.ide.mcu.ide 1 1 2024-04-30 16:59:28.226
+!MESSAGE Started RMI Server, listening on port 41337
+
+!ENTRY org.eclipse.cdt.core 1 0 2024-04-30 17:30:29.262
+!MESSAGE Indexed 'P6Fase3' (40 sources, 103 headers) in 6.24 sec: 9,380 declarations; 62,379 references; 0 unresolved inclusions; 1 syntax errors; 2 unresolved names (0.0028%)
+!SESSION 2024-05-04 16:37:22.492 -----------------------------------------------
+eclipse.buildId=Version 1.13.0
+java.version=17.0.6
+java.vendor=Eclipse Adoptium
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=es_ES
+Command-line arguments:  -os win32 -ws win32 -arch x86_64
+
+!ENTRY com.st.stm32cube.ide.mcu.informationcenter 4 4 2024-05-04 16:37:45.674
+!MESSAGE CubeMX plugin appears to be active, Log4j initialization might be too late.
+
+!ENTRY com.st.stm32cube.ide.mcu.informationcenter 1 1 2024-05-04 16:37:45.685
+!MESSAGE Log4j2 initialized with config file C:\Users\jesus\Documents\SETR1ws\Practicas-SETR1\.metadata\.log4j2.xml
+
+!ENTRY com.st.stm32cube.ide.mcu.ide 1 1 2024-05-04 16:37:54.774
+!MESSAGE Started RMI Server, listening on port 41337

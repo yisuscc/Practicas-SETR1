@@ -137,8 +137,13 @@ int main(void) {
 /* Infinite loop */
 /* USER CODE BEGIN WHILE */
 while (1)
-{// leemos eje x
+{// leelmos el estado el botón
+	if (HAL_GPIO_ReadPin(BUTTON_EXTI13_GPIO_Port, BUTTON_EXTI13_Pin)==1){
+			dato[0]=0b00100000 ;// Button
+		}
+	// leemos eje x
 // establecemos el valor de dato[1]
+
 	dato[1]= convert2(readAccel(0));
 // leemos eje y
 //establecemos el valor de dato[2]
