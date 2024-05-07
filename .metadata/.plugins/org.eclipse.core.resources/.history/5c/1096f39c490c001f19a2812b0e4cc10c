@@ -22,7 +22,7 @@
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
-#include "hd44780.h"
+
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -776,16 +776,9 @@ void StartLCD_TareaA(void *argument)
 {
   /* USER CODE BEGIN StartLCD_TareaA */
   /* Infinite loop */
-	int contador = 0;
-	lcd_reset();
-	lcd_display_settings(1,0,0);
   for(;;)
   {
-	  moveToXY(0, 0);
-	  lcd_print("Tarea A: ");
-	  writeIntegerToLCD(contador++);
-
-    osDelay(200);
+    osDelay(1);
   }
   /* USER CODE END StartLCD_TareaA */
 }
