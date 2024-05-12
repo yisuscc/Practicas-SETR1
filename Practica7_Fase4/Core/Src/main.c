@@ -165,7 +165,7 @@ int main(void)
   MX_TIM7_Init();
   /* USER CODE BEGIN 2 */
   HAL_DAC_Start(&hdac1, DAC1_CHANNEL_2);
-  HAL_TIM_Base_Start_IT(&htim7)
+  HAL_TIM_Base_Start_IT(&htim7);
   /* USER CODE END 2 */
 
   /* Init scheduler */
