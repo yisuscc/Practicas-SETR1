@@ -1,23 +1,25 @@
 /* USER CODE BEGIN Header */
 /**
-  ******************************************************************************
-  * @file           : main.c
-  * @brief          : Main program body
-  ******************************************************************************
-  * @attention
-  *
-  * Copyright (c) 2024 STMicroelectronics.
-  * All rights reserved.
-  *
-  * This software is licensed under terms that can be found in the LICENSE file
-  * in the root directory of this software component.
-  * If no LICENSE file comes with this software, it is provided AS-IS.
-  *
-  ******************************************************************************
-  */
+ ******************************************************************************
+ * @file           : main.c
+ * @brief          : Main program body
+ ******************************************************************************
+ * @attention
+ *
+ * Copyright (c) 2024 STMicroelectronics.
+ * All rights reserved.
+ *
+ * This software is licensed under terms that can be found in the LICENSE file
+ * in the root directory of this software component.
+ * If no LICENSE file comes with this software, it is provided AS-IS.
+ *
+ ******************************************************************************
+ */
 /* USER CODE END Header */
 /* Includes ------------------------------------------------------------------*/
 #include "main.h"
+#include <stdio.h>
+#include <math.h>
 #include "cmsis_os.h"
 #include "usb_device.h"
 
@@ -42,6 +44,8 @@
 /* USER CODE END PM */
 
 /* Private variables ---------------------------------------------------------*/
+ADC_HandleTypeDef hadc1;
+
 DAC_HandleTypeDef hdac1;
 
 DFSDM_Channel_HandleTypeDef hdfsdm1_channel1;
@@ -90,7 +94,7 @@ osThreadId_t LCDtareaBHandle;
 const osThreadAttr_t LCDtareaB_attributes = {
   .name = "LCDtareaB",
   .stack_size = 128 * 4,
-  .priority = (osPriority_t) osPriorityLow1,
+  .priority = (osPriority_t) osPriorityLow,
 };
 /* Definitions for AccesoLCD */
 osSemaphoreId_t AccesoLCDHandle;
@@ -98,11 +102,13 @@ const osSemaphoreAttr_t AccesoLCD_attributes = {
   .name = "AccesoLCD"
 };
 /* USER CODE BEGIN PV */
-
+extern float ganancia;
+extern uint8_t efecto;
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
 void SystemClock_Config(void);
+void PeriphCommonClock_Config(void);
 static void MX_GPIO_Init(void);
 static void MX_DFSDM1_Init(void);
 static void MX_I2C2_Init(void);
@@ -112,6 +118,7 @@ static void MX_USART1_UART_Init(void);
 static void MX_USART3_UART_Init(void);
 static void MX_DAC1_Init(void);
 static void MX_TIM7_Init(void);
+static void MX_ADC1_Init(void);
 void StartDefaultTask(void *argument);
 void Start_led_verde(void *argument);
 void Start_led_amarillo(void *argument);
@@ -124,7 +131,31 @@ void StartTareaB(void *argument);
 
 /* Private user code ---------------------------------------------------------*/
 /* USER CODE BEGIN 0 */
-
+uint8_t getButton(uint16_t sample) {
+	// uint8_t getButton(uint32_t sample)
+	// uint8_t getButton(uint16_t sample)
+	//da errores si las declaramos de esta forma
+	uint8_t res = 0;
+	if (sample == 4095) {
+		res = 0;
+	} else if (sample >= 700 && sample <= 730) {
+		// boton up
+		res = 2;
+	} else if (sample >= 1618 && sample <= 1660) {
+		//boton down
+		res = 3;
+	} else if (sample >= 2380 && sample <= 2450) {
+		// boton left
+		res = 4;
+	} else if (sample >= 3350 && sample <= 3380) {
+		// select 3366
+		res = 5;
+	} else if (sample >= 0 && sample <= 100) {
+		//boton right 000
+		res = 1;
+	}
+	return res;
+}
 /* USER CODE END 0 */
 
 /**
@@ -149,6 +180,9 @@ int main(void)
   /* Configure the system clock */
   SystemClock_Config();
 
+/* Configure the peripherals common clocks */
+  PeriphCommonClock_Config();
+
   /* USER CODE BEGIN SysInit */
 
   /* USER CODE END SysInit */
@@ -163,16 +197,17 @@ int main(void)
   MX_USART3_UART_Init();
   MX_DAC1_Init();
   MX_TIM7_Init();
+  MX_ADC1_Init();
   /* USER CODE BEGIN 2 */
-  HAL_DAC_Start(&hdac1, DAC1_CHANNEL_2);
-  HAL_TIM_Base_Start_IT(&htim7);
+	HAL_DAC_Start(&hdac1, DAC1_CHANNEL_2);
+	HAL_TIM_Base_Start_IT(&htim7);
   /* USER CODE END 2 */
 
   /* Init scheduler */
   osKernelInitialize();
 
   /* USER CODE BEGIN RTOS_MUTEX */
-  /* add mutexes, ... */
+	/* add mutexes, ... */
   /* USER CODE END RTOS_MUTEX */
 
   /* Create the semaphores(s) */
@@ -180,15 +215,15 @@ int main(void)
   AccesoLCDHandle = osSemaphoreNew(1, 1, &AccesoLCD_attributes);
 
   /* USER CODE BEGIN RTOS_SEMAPHORES */
-  /* add semaphores, ... */
+	/* add semaphores, ... */
   /* USER CODE END RTOS_SEMAPHORES */
 
   /* USER CODE BEGIN RTOS_TIMERS */
-  /* start timers, add new ones, ... */
+	/* start timers, add new ones, ... */
   /* USER CODE END RTOS_TIMERS */
 
   /* USER CODE BEGIN RTOS_QUEUES */
-  /* add queues, ... */
+	/* add queues, ... */
   /* USER CODE END RTOS_QUEUES */
 
   /* Create the thread(s) */
@@ -208,11 +243,11 @@ int main(void)
   LCDtareaBHandle = osThreadNew(StartTareaB, NULL, &LCDtareaB_attributes);
 
   /* USER CODE BEGIN RTOS_THREADS */
-  /* add threads, ... */
+	/* add threads, ... */
   /* USER CODE END RTOS_THREADS */
 
   /* USER CODE BEGIN RTOS_EVENTS */
-  /* add events, ... */
+	/* add events, ... */
   /* USER CODE END RTOS_EVENTS */
 
   /* Start scheduler */
@@ -221,12 +256,11 @@ int main(void)
   /* We should never get here as control is now taken by the scheduler */
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
-  while (1)
-  {
+	while (1) {
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
-  }
+	}
   /* USER CODE END 3 */
 }
 
@@ -288,6 +322,99 @@ void SystemClock_Config(void)
   /** Enable MSI Auto calibration
   */
   HAL_RCCEx_EnableMSIPLLMode();
+}
+
+/**
+  * @brief Peripherals Common Clock Configuration
+  * @retval None
+  */
+void PeriphCommonClock_Config(void)
+{
+  RCC_PeriphCLKInitTypeDef PeriphClkInit = {0};
+
+  /** Initializes the peripherals clock
+  */
+  PeriphClkInit.PeriphClockSelection = RCC_PERIPHCLK_USB|RCC_PERIPHCLK_ADC;
+  PeriphClkInit.AdcClockSelection = RCC_ADCCLKSOURCE_PLLSAI1;
+  PeriphClkInit.UsbClockSelection = RCC_USBCLKSOURCE_PLLSAI1;
+  PeriphClkInit.PLLSAI1.PLLSAI1Source = RCC_PLLSOURCE_MSI;
+  PeriphClkInit.PLLSAI1.PLLSAI1M = 1;
+  PeriphClkInit.PLLSAI1.PLLSAI1N = 24;
+  PeriphClkInit.PLLSAI1.PLLSAI1P = RCC_PLLP_DIV7;
+  PeriphClkInit.PLLSAI1.PLLSAI1Q = RCC_PLLQ_DIV2;
+  PeriphClkInit.PLLSAI1.PLLSAI1R = RCC_PLLR_DIV2;
+  PeriphClkInit.PLLSAI1.PLLSAI1ClockOut = RCC_PLLSAI1_48M2CLK|RCC_PLLSAI1_ADC1CLK;
+  if (HAL_RCCEx_PeriphCLKConfig(&PeriphClkInit) != HAL_OK)
+  {
+    Error_Handler();
+  }
+}
+
+/**
+  * @brief ADC1 Initialization Function
+  * @param None
+  * @retval None
+  */
+static void MX_ADC1_Init(void)
+{
+
+  /* USER CODE BEGIN ADC1_Init 0 */
+
+  /* USER CODE END ADC1_Init 0 */
+
+  ADC_MultiModeTypeDef multimode = {0};
+  ADC_ChannelConfTypeDef sConfig = {0};
+
+  /* USER CODE BEGIN ADC1_Init 1 */
+
+  /* USER CODE END ADC1_Init 1 */
+
+  /** Common config
+  */
+  hadc1.Instance = ADC1;
+  hadc1.Init.ClockPrescaler = ADC_CLOCK_ASYNC_DIV1;
+  hadc1.Init.Resolution = ADC_RESOLUTION_12B;
+  hadc1.Init.DataAlign = ADC_DATAALIGN_RIGHT;
+  hadc1.Init.ScanConvMode = ADC_SCAN_DISABLE;
+  hadc1.Init.EOCSelection = ADC_EOC_SINGLE_CONV;
+  hadc1.Init.LowPowerAutoWait = DISABLE;
+  hadc1.Init.ContinuousConvMode = DISABLE;
+  hadc1.Init.NbrOfConversion = 1;
+  hadc1.Init.DiscontinuousConvMode = DISABLE;
+  hadc1.Init.ExternalTrigConv = ADC_SOFTWARE_START;
+  hadc1.Init.ExternalTrigConvEdge = ADC_EXTERNALTRIGCONVEDGE_NONE;
+  hadc1.Init.DMAContinuousRequests = DISABLE;
+  hadc1.Init.Overrun = ADC_OVR_DATA_PRESERVED;
+  hadc1.Init.OversamplingMode = DISABLE;
+  if (HAL_ADC_Init(&hadc1) != HAL_OK)
+  {
+    Error_Handler();
+  }
+
+  /** Configure the ADC multi-mode
+  */
+  multimode.Mode = ADC_MODE_INDEPENDENT;
+  if (HAL_ADCEx_MultiModeConfigChannel(&hadc1, &multimode) != HAL_OK)
+  {
+    Error_Handler();
+  }
+
+  /** Configure Regular Channel
+  */
+  sConfig.Channel = ADC_CHANNEL_14;
+  sConfig.Rank = ADC_REGULAR_RANK_1;
+  sConfig.SamplingTime = ADC_SAMPLETIME_2CYCLES_5;
+  sConfig.SingleDiff = ADC_SINGLE_ENDED;
+  sConfig.OffsetNumber = ADC_OFFSET_NONE;
+  sConfig.Offset = 0;
+  if (HAL_ADC_ConfigChannel(&hadc1, &sConfig) != HAL_OK)
+  {
+    Error_Handler();
+  }
+  /* USER CODE BEGIN ADC1_Init 2 */
+
+  /* USER CODE END ADC1_Init 2 */
+
 }
 
 /**
@@ -663,14 +790,6 @@ static void MX_GPIO_Init(void)
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   HAL_GPIO_Init(BUTTON_EXTI13_GPIO_Port, &GPIO_InitStruct);
 
-  /*Configure GPIO pins : ARD_A5_Pin ARD_A4_Pin ARD_A3_Pin ARD_A2_Pin
-                           ARD_A1_Pin ARD_A0_Pin */
-  GPIO_InitStruct.Pin = ARD_A5_Pin|ARD_A4_Pin|ARD_A3_Pin|ARD_A2_Pin
-                          |ARD_A1_Pin|ARD_A0_Pin;
-  GPIO_InitStruct.Mode = GPIO_MODE_ANALOG_ADC_CONTROL;
-  GPIO_InitStruct.Pull = GPIO_NOPULL;
-  HAL_GPIO_Init(GPIOC, &GPIO_InitStruct);
-
   /*Configure GPIO pins : ARD_D1_Pin ARD_D0_Pin */
   GPIO_InitStruct.Pin = ARD_D1_Pin|ARD_D0_Pin;
   GPIO_InitStruct.Mode = GPIO_MODE_AF_PP;
@@ -780,129 +899,150 @@ static void MX_GPIO_Init(void)
 
 /* USER CODE BEGIN Header_StartDefaultTask */
 /**
-  * @brief  Function implementing the defaultTask thread.
-  * @param  argument: Not used
-  * @retval None
-  */
+ * @brief  Function implementing the defaultTask thread.
+ * @param  argument: Not used
+ * @retval None
+ */
 /* USER CODE END Header_StartDefaultTask */
 void StartDefaultTask(void *argument)
 {
   /* init code for USB_DEVICE */
   MX_USB_DEVICE_Init();
   /* USER CODE BEGIN 5 */
-  /* Infinite loop */
-  for(;;)
-  {
-    osDelay(1);
-  }
+	/* Infinite loop */
+	for (;;) {
+		osDelay(1);
+	}
   /* USER CODE END 5 */
 }
 
 /* USER CODE BEGIN Header_Start_led_verde */
 /**
-* @brief Function implementing the led_verde thread.
-* @param argument: Not used
-* @retval None
-*/
+ * @brief Function implementing the led_verde thread.
+ * @param argument: Not used
+ * @retval None
+ */
 /* USER CODE END Header_Start_led_verde */
 void Start_led_verde(void *argument)
 {
   /* USER CODE BEGIN Start_led_verde */
-  /* Infinite loop */
-  for(;;)
-  {HAL_GPIO_WritePin(verde_GPIO_Port, verde_Pin,1);
-    osDelay(300);
-    HAL_GPIO_WritePin(verde_GPIO_Port, verde_Pin,0);
-        osDelay(300);
-  }
+	/* Infinite loop */
+	for (;;) {
+		HAL_GPIO_WritePin(verde_GPIO_Port, verde_Pin, 1);
+		osDelay(300);
+		HAL_GPIO_WritePin(verde_GPIO_Port, verde_Pin, 0);
+		osDelay(300);
+	}
   /* USER CODE END Start_led_verde */
 }
 
 /* USER CODE BEGIN Header_Start_led_amarillo */
 /**
-* @brief Function implementing the led_amarillo thread.
-* @param argument: Not used
-* @retval None
-*/
+ * @brief Function implementing the led_amarillo thread.
+ * @param argument: Not used
+ * @retval None
+ */
 /* USER CODE END Header_Start_led_amarillo */
 void Start_led_amarillo(void *argument)
 {
   /* USER CODE BEGIN Start_led_amarillo */
-  /* Infinite loop */
-  for(;;)
-  {
-	  HAL_GPIO_WritePin(amarillo_GPIO_Port, amarillo_Pin, 1);
-	      osDelay(300);
-	      HAL_GPIO_WritePin(amarillo_GPIO_Port,amarillo_Pin,0);
-	          osDelay(300);
-  }
+	/* Infinite loop */
+	for (;;) {
+		HAL_GPIO_WritePin(amarillo_GPIO_Port, amarillo_Pin, 1);
+		osDelay(300);
+		HAL_GPIO_WritePin(amarillo_GPIO_Port, amarillo_Pin, 0);
+		osDelay(300);
+	}
   /* USER CODE END Start_led_amarillo */
 }
 
 /* USER CODE BEGIN Header_StartLCD_TareaA */
 /**
-* @brief Function implementing the LCDTareaA thread.
-* @param argument: Not used
-* @retval None
-*/
+ * @brief Function implementing the LCDTareaA thread.
+ * @param argument: Not used
+ * @retval None
+ */
 /* USER CODE END Header_StartLCD_TareaA */
 void StartLCD_TareaA(void *argument)
 {
   /* USER CODE BEGIN StartLCD_TareaA */
-  /* Infinite loop */
-	int contador = 0;
+	/* Infinite loop */
 	lcd_reset();
-	lcd_display_settings(1,0,0);
+	lcd_display_settings(1, 0, 0);
 	lcd_clear();
-	uint32_t tickA;
-	tickA = osKernelGetTickCount();
-  for(;;)
-  {	  tickA+=200;
-   osDelay(tickA);
-	  osSemaphoreAcquire(AccesoLCDHandle, 0xFFFFfFFF);
-  //le damos un time out enorme
-	  moveToXY(0, 0);
-	  lcd_print("Tarea A: ");
-	  contador++;
-	  writeIntegerToLCD(contador);
-	//  tickA+=200;
-osSemaphoreRelease(AccesoLCDHandle);
+	char str[10];
 
-//osDelay(200);
-  }
+	for (;;) {
+		osSemaphoreAcquire(AccesoLCDHandle, 0xFFFFFFF);
+		//le damos un time out enorme
+		//leemos la botonera y ponemos el boton
+		  HAL_ADC_Start(&hadc1);
+		  // 2- Esperar a que esté disponible
+		  HAL_ADC_PollForConversion(&hadc1, 100);
+		  // 3- Leer muestra del registro de datos
+		  uint32_t sample =  HAL_ADC_GetValue(&hadc1);
+		  // modicamos gnancia up down
+		  moveToXY(0, 0);
+		  if(getButton(sample)==2){
+			  ganancia=ganancia+0.1;
+
+		  }else if(getButton(sample)==3){
+			  ganancia=ganancia-0.1;
+		  }
+		  sprintf(str,"G: %.1f",ganancia);
+		  lcd_print(str);
+
+		  // 4-PResentar valores
+
+
+		//  lcd_print(str);
+
+		osSemaphoreRelease(AccesoLCDHandle);
+
+		osDelay(200);
+	}
   /* USER CODE END StartLCD_TareaA */
 }
 
 /* USER CODE BEGIN Header_StartTareaB */
 /**
-* @brief Function implementing the LCDtareaB thread.
-* @param argument: Not used
-* @retval None
-*/
+ * @brief Function implementing the LCDtareaB thread.
+ * @param argument: Not used
+ * @retval None
+ */
 /* USER CODE END Header_StartTareaB */
 void StartTareaB(void *argument)
 {
   /* USER CODE BEGIN StartTareaB */
-  /* Infinite loop */
+	/* Infinite loop */
 	//esta se supone que la debemos retrasar un poco
-int contador2 =0;
-osDelay(16);
-uint32_t tickB;
-tickB = osKernelGetTickCount();
-  for(;;)
-  {   tickB+=100;
-	  osDelay(tickB);
+	//int contador2 = 0;
+	osDelay(25);
+//uint32_t tickB;
+//tickB = osKernelGetTickCount();
+	for (;;) {  // tickB+=100;
+				//osDelayUntil(tickB);
 
-	 osSemaphoreAcquire(AccesoLCDHandle, 0xFFFFfFFF);
-	moveToXY(1, 0);
-	lcd_print("Tarea B");
-	contador2++;
-	writeIntegerToLCD(contador2);
+		osSemaphoreAcquire(AccesoLCDHandle, 0xFFFFFFF);
+	//lectura de la ganancia
+		  HAL_ADC_Start(&hadc1);
+		  // 2- Esperar a que esté disponible
+		  HAL_ADC_PollForConversion(&hadc1, 100);
+		  // 3- Leer muestra del registro de datos
+		  uint32_t sample =  HAL_ADC_GetValue(&hadc1);
+		  if(getButton(sample)==4){
+			  efecto++;
+		  }else if(getButton(sample)==1){
+			  efecto--;
+		  }
 
-	osSemaphoreRelease(AccesoLCDHandle);
+		  moveToXY(1, 0);
+		  lcd_print("Efecto");
+		  writeIntegerToLCD(efecto);
+		osSemaphoreRelease(AccesoLCDHandle);
+		osDelay(200);
 
-
-  }
+	}
   /* USER CODE END StartTareaB */
 }
 
@@ -913,11 +1053,10 @@ tickB = osKernelGetTickCount();
 void Error_Handler(void)
 {
   /* USER CODE BEGIN Error_Handler_Debug */
-  /* User can add his own implementation to report the HAL error return state */
-  __disable_irq();
-  while (1)
-  {
-  }
+	/* User can add his own implementation to report the HAL error return state */
+	__disable_irq();
+	while (1) {
+	}
   /* USER CODE END Error_Handler_Debug */
 }
 

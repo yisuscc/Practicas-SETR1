@@ -96,8 +96,6 @@ void Error_Handler(void);
 #define ARD_D12_GPIO_Port GPIOA
 #define ARD_D11_Pin GPIO_PIN_7
 #define ARD_D11_GPIO_Port GPIOA
-#define ARD_A0_Pin GPIO_PIN_5
-#define ARD_A0_GPIO_Port GPIOC
 #define ARD_D3_Pin GPIO_PIN_0
 #define ARD_D3_GPIO_Port GPIOB
 #define D6_LCD_Pin GPIO_PIN_1

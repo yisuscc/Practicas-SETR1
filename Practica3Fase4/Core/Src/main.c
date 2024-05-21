@@ -19,7 +19,6 @@
 /* Includes ------------------------------------------------------------------*/
 #include "main.h"
 
-
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
 #include "hd44780.h"
@@ -198,7 +197,7 @@ int main(void)
 	  HAL_UART_Transmit(&huart1, str, strlen(str), 1000);
 	  // esperamos
 	  	  HAL_Delay(500);
-	  /* USER CODE END WHILE */
+    /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
   }

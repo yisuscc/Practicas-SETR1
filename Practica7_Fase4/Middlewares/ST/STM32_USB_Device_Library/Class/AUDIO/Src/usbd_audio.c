@@ -92,10 +92,8 @@
 #define AUDIO_SAMPLE_FREQ(frq) \
   (uint8_t)(frq), (uint8_t)((frq >> 8)), (uint8_t)((frq >> 16))
 
-//#define AUDIO_PACKET_SZE(frq) \
-//  (uint8_t)(((frq * 2U * 2U) / 1000U) & 0xFFU), (uint8_t)((((frq * 2U * 2U) / 1000U) >> 8) & 0xFFU)
 #define AUDIO_PACKET_SZE(frq) \
-  (uint8_t)(((frq * 2U) / 1000U) & 0xFFU), (uint8_t)((((frq  * 2U) / 1000U) >> 8) & 0xFFU)
+  (uint8_t)(((frq * 2U ) / 1000U) & 0xFFU), (uint8_t)((((frq * 2U) / 1000U) >> 8) & 0xFFU)
 
 #ifdef USE_USBD_COMPOSITE
 #define AUDIO_PACKET_SZE_WORD(frq)     (uint32_t)((((frq) * 2U * 2U)/1000U))
@@ -104,7 +102,7 @@
  * @}
  */
 uint8_t disponible = 0;
-int16_t *audiobuf; //puntero que apunta ala posicion enmibiuf
+int16_t *audiobuf;
 int16_t mibuf[256][24];
 uint8_t jj = 0;
 
@@ -277,7 +275,7 @@ __ALIGN_BEGIN static uint8_t USBD_AUDIO_CfgDesc[USB_AUDIO_CONFIG_DESC_SIZ] __ALI
 				AUDIO_INTERFACE_DESCRIPTOR_TYPE, /* bDescriptorType */
 				AUDIO_STREAMING_FORMAT_TYPE, /* bDescriptorSubtype */
 				AUDIO_FORMAT_TYPE_I, /* bFormatType */
-				0x01, //un solo canal                                 /* bNrChannels */
+				0x01, /* bNrChannels */
 				0x02, /* bSubFrameSize :  2 Bytes per frame (16bits) */
 				16, /* bBitResolution (16-bits per sample) */
 				0x01, /* bSamFreqType only one frequency supported */
