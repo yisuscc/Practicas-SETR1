@@ -53,6 +53,17 @@ const osThreadAttr_t ledVerde_attributes = { .name = "ledVerde", .stack_size =
 osThreadId_t ledAmarilloHandle;
 const osThreadAttr_t ledAmarillo_attributes = { .name = "ledAmarillo",
 		.stack_size = 128 * 4, .priority = (osPriority_t) osPriorityNormal, };
+/* Definitions for control_leds */
+osThreadId_t control_ledsHandle;
+const osThreadAttr_t control_leds_attributes =
+		{ .name = "control_leds", .stack_size = 128 * 4, .priority =
+				(osPriority_t) osPriorityBelowNormal, };
+/* Definitions for semaverde */
+osSemaphoreId_t semaverdeHandle;
+const osSemaphoreAttr_t semaverde_attributes = { .name = "semaverde" };
+/* Definitions for semarillo */
+osSemaphoreId_t semarilloHandle;
+const osSemaphoreAttr_t semarillo_attributes = { .name = "semarillo" };
 /* USER CODE BEGIN PV */
 
 /* USER CODE END PV */
@@ -63,6 +74,7 @@ static void MX_GPIO_Init(void);
 void StartDefaultTask(void *argument);
 void Start_led_verde(void *argument);
 void Start_led_amarillo(void *argument);
+void Start_control_leds(void *argument);
 
 /* USER CODE BEGIN PFP */
 
@@ -111,6 +123,13 @@ int main(void) {
 	/* add mutexes, ... */
 	/* USER CODE END RTOS_MUTEX */
 
+	/* Create the semaphores(s) */
+	/* creation of semaverde */
+	semaverdeHandle = osSemaphoreNew(5, 0, &semaverde_attributes);
+
+	/* creation of semarillo */
+	semarilloHandle = osSemaphoreNew(5, 0, &semarillo_attributes);
+
 	/* USER CODE BEGIN RTOS_SEMAPHORES */
 	/* add semaphores, ... */
 	/* USER CODE END RTOS_SEMAPHORES */
@@ -134,6 +153,10 @@ int main(void) {
 	/* creation of ledAmarillo */
 	ledAmarilloHandle = osThreadNew(Start_led_amarillo, NULL,
 			&ledAmarillo_attributes);
+
+	/* creation of control_leds */
+	control_ledsHandle = osThreadNew(Start_control_leds, NULL,
+			&control_leds_attributes);
 
 	/* USER CODE BEGIN RTOS_THREADS */
 	/* add threads, ... */
@@ -266,6 +289,7 @@ void Start_led_verde(void *argument) {
 	/* USER CODE BEGIN Start_led_verde */
 	/* Infinite loop */
 	for (;;) {
+		osSemaphoreAcquire(semaverdeHandle, 0xFFFFFFF);
 		HAL_GPIO_WritePin(VERDE_GPIO_Port, VERDE_Pin, GPIO_PIN_SET);
 		osDelay(300);
 		HAL_GPIO_WritePin(VERDE_GPIO_Port, VERDE_Pin, GPIO_PIN_RESET);
@@ -285,12 +309,58 @@ void Start_led_amarillo(void *argument) {
 	/* USER CODE BEGIN Start_led_amarillo */
 	/* Infinite loop */
 	for (;;) {
-		HAL_GPIO_WritePin(AMARILLO_GPIO_Port, AMARILLO_Pin,GPIO_PIN_SET);
+		osSemaphoreAcquire(semarilloHandle, 0xFFFFFFF);
+		HAL_GPIO_WritePin(AMARILLO_GPIO_Port, AMARILLO_Pin, GPIO_PIN_SET);
 		osDelay(200);
-		HAL_GPIO_WritePin(AMARILLO_GPIO_Port, AMARILLO_Pin,GPIO_PIN_RESET);
+		HAL_GPIO_WritePin(AMARILLO_GPIO_Port, AMARILLO_Pin, GPIO_PIN_RESET);
 		osDelay(200);
 	}
 	/* USER CODE END Start_led_amarillo */
+}
+
+/* USER CODE BEGIN Header_Start_control_leds */
+/**
+ * @brief Function implementing the control_leds thread.
+ * @param argument: Not used
+ * @retval None
+ */
+/* USER CODE END Header_Start_control_leds */
+void Start_control_leds(void *argument) {
+	/* USER CODE BEGIN Start_control_leds */
+	/* Infinite loop */
+
+	unsigned short contador, i;
+	//mientras no se plse el tamper, esperamos de forma activa
+	while (HAL_GPIO_ReadPin(TAMPER_GPIO_Port, TAMPER_Pin) == 0) {
+		osDelay(50);
+	}
+	for (;;) {
+		if(HAL_GPIO_ReadPin(GPIOA, WKUP_Pin)==1){
+			contador++;
+			//incrementamos el contador en uno por cada pulsación
+			while(HAL_GPIO_ReadPin(GPIOA,WKUP_Pin)==1){
+				//hasta que no se libere no salimos
+				osDelay(10);
+			}
+		}
+		//ahora lo mismo con el tamper
+		if(HAL_GPIO_ReadPin(GPIOC, TAMPER_Pin)==0){
+			for(i = 0; i<contador; i++){
+				osSemaphoreRelease(semaverdeHandle);
+			}
+			for(i = 0; i<contador; i++){
+				osSemaphoreRelease(semarilloHandle);
+			}
+			contador =0;
+			while(HAL_GPIO_ReadPin(GPIOC, TAMPER_Pin)==1){
+				//esperamos a que se libere para salir
+				osDelay(10);
+			}
+		}
+
+		osDelay(10);
+	}
+	/* USER CODE END Start_control_leds */
 }
 
 /**

@@ -1,7 +1,7 @@
 LaunchTargetManager/org.eclipse.launchbar.core.launchTargetType.local,Local/arch=x86_64
 LaunchTargetManager/org.eclipse.launchbar.core.launchTargetType.local,Local/name=Local
 LaunchTargetManager/org.eclipse.launchbar.core.launchTargetType.local,Local/os=win32
-configDescList=org.eclipse.launchbar.core.descriptorType.default\:Practica1 Debug,org.eclipse.launchbar.core.descriptorType.default\:Proyecto8A Debug
+configDescList=org.eclipse.launchbar.core.descriptorType.default\:Practica1 Debug,org.eclipse.launchbar.core.descriptorType.default\:Proyecto8A Debug,org.eclipse.launchbar.core.descriptorType.default\:New_configuration,org.eclipse.cdt.dsf.gdb.gdbRemotedescriptorType\:Proyecto8B,org.eclipse.launchbar.core.descriptorType.default\:Proyecto8B Debug
 eclipse.preferences.version=1
 org.eclipse.cdt.dsf.gdb.gdbRemotedescriptorType\:P6Fase2_2Intento\ Debug/activeLaunchMode=debug
 org.eclipse.cdt.dsf.gdb.gdbRemotedescriptorType\:P6Fase2_2Intento\ Debug/activeLaunchTarget=null\:---
@@ -27,6 +27,8 @@ org.eclipse.cdt.dsf.gdb.gdbRemotedescriptorType\:Practica7_Fase4\ Debug/activeLa
 org.eclipse.cdt.dsf.gdb.gdbRemotedescriptorType\:Practica7_Fase4\ Debug/activeLaunchTarget=null\:---
 org.eclipse.cdt.dsf.gdb.gdbRemotedescriptorType\:Proyecto8A\ Debug\ (1)/activeLaunchMode=run
 org.eclipse.cdt.dsf.gdb.gdbRemotedescriptorType\:Proyecto8A\ Debug\ (1)/activeLaunchTarget=null\:---
+org.eclipse.cdt.dsf.gdb.gdbRemotedescriptorType\:Proyecto8B/activeLaunchMode=debug
+org.eclipse.cdt.dsf.gdb.gdbRemotedescriptorType\:Proyecto8B/activeLaunchTarget=null\:---
 org.eclipse.launchbar.core.descriptorType.default\:P6fase2\ Debug/activeLaunchMode=debug
 org.eclipse.launchbar.core.descriptorType.default\:P6fase2\ Debug/activeLaunchTarget=org.eclipse.launchbar.core.launchTargetType.local\:Local
 org.eclipse.launchbar.core.descriptorType.default\:Practica1\ Debug/activeLaunchMode=debug
@@ -34,3 +36,5 @@ org.eclipse.launchbar.core.descriptorType.default\:Practica1\ Debug/activeLaunch
 org.eclipse.launchbar.core.descriptorType.default\:Practica6Fase1A\ Debug/activeLaunchMode=run
 org.eclipse.launchbar.core.descriptorType.default\:Practica6Fase1A\ Debug/activeLaunchTarget=org.eclipse.launchbar.core.launchTargetType.local\:Local
 org.eclipse.launchbar.core.descriptorType.default\:Proyecto8A\ Debug/activeLaunchTarget=org.eclipse.launchbar.core.launchTargetType.local\:Local
+org.eclipse.launchbar.core.descriptorType.default\:Proyecto8B\ Debug/activeLaunchMode=debug
+org.eclipse.launchbar.core.descriptorType.default\:Proyecto8B\ Debug/activeLaunchTarget=org.eclipse.launchbar.core.launchTargetType.local\:Local

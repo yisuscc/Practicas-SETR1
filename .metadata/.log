@@ -4187,3 +4187,27 @@ Command-line arguments:  -os win32 -ws win32 -arch x86_64
 
 !ENTRY org.eclipse.cdt.core 1 0 2024-05-26 11:08:45.513
 !MESSAGE Indexed 'Proyecto8B' (31 sources, 130 headers) in 2.95 sec: 11,679 declarations; 55,546 references; 8 unresolved inclusions; 672 syntax errors; 1,219 unresolved names (1.8%)
+
+!ENTRY org.eclipse.cdt.dsf.gdb 4 104 2024-05-26 11:49:00.897
+!MESSAGE Program file does not exist
+!SUBENTRY 1 org.eclipse.cdt.dsf.gdb 4 104 2024-05-26 11:49:00.897
+!MESSAGE 
+
+!ENTRY org.eclipse.cdt.dsf.gdb 4 104 2024-05-26 11:50:21.263
+!MESSAGE Program file does not exist
+!SUBENTRY 1 org.eclipse.cdt.dsf.gdb 4 104 2024-05-26 11:50:21.263
+!MESSAGE 
+
+!ENTRY org.eclipse.embedcdt.debug.gdbjtag.openocd.core 4 1 2024-05-26 11:55:01.793
+!MESSAGE C:\Users\jesus\AppData\Roaming\xPacks\bin\qemu-system-gnuarmeclipse.exe --verbose --board STM32-P107 --mcu cortex-m3 --gdb tcp::1234 -d unimp,guest_errors --semihosting-config enable=on,target=native --semihosting-cmdline Proyecto8B
+
+!ENTRY org.eclipse.embedcdt.debug.gdbjtag.core 4 0 2024-05-26 11:55:03.028
+!MESSAGE QEMU failed with code (1).
+
+For more details, see the qemu-system-gnuarmeclipse.exe console.
+
+!ENTRY org.eclipse.embedcdt.debug.gdbjtag.openocd.core 4 1 2024-05-26 11:55:38.765
+!MESSAGE C:\Users\jesus\AppData\Roaming\xPacks\bin\qemu-system-gnuarmeclipse.exe --verbose --board STM32-P107 --mcu STM32F107VC --gdb tcp::1234 -d unimp,guest_errors --semihosting-config enable=on,target=native --semihosting-cmdline Proyecto8B
+
+!ENTRY org.eclipse.embedcdt.debug.gdbjtag.openocd.core 4 1 2024-05-26 11:55:38.907
+!MESSAGE C:\ST\STM32CubeIDE_1.13.0\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.11.3.rel1.win32_1.1.0.202305231506\tools\bin\arm-none-eabi-gdb.exe --interpreter=mi2 --nx
