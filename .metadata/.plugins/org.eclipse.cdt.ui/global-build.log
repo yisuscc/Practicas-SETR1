@@ -512,3 +512,123 @@ arm-none-eabi-size   Proyecto8B.elf
   22000	     24	   9160	  31184	   79d0	Proyecto8B.elf
 Finished building: default.size.stdout
  
+13:21:59 **** Build of configuration Debug for project Proyecto8C ****
+make -j12 all 
+arm-none-eabi-gcc "../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3/port.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F107xC -c -I../Core/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3 -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3/port.d" -MT"Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3/port.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3/port.o"
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F107xC -c -I../Core/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3 -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c: In function 'StartTask05':
+../Core/Src/main.c:393:77: error: 'cont2a' undeclared (first use in this function); did you mean 'conta2'?
+  393 |                                         osMessageQueuePut(num_pulsaHandle, &cont2a, 0, 0);
+      |                                                                             ^~~~~~
+      |                                                                             conta2
+../Core/Src/main.c:393:77: note: each undeclared identifier is reported only once for each function it appears in
+../Core/Src/main.c: In function 'Start_control_leds':
+../Core/Src/main.c:433:9: error: expected declaration or statement at end of input
+  433 |         }
+      |         ^
+At top level:
+../Core/Src/main.c:426:14: warning: 'Error_Handler' defined but not used [-Wunused-function]
+  426 |         void Error_Handler(void) {
+      |              ^~~~~~~~~~~~~
+../Core/Src/main.c:410:14: warning: 'HAL_TIM_PeriodElapsedCallback' defined but not used [-Wunused-function]
+  410 |         void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim) {
+      |              ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+../Core/Src/main.c:380:14: warning: 'StartTask05' defined but not used [-Wunused-function]
+  380 |         void StartTask05(void *argument) {
+      |              ^~~~~~~~~~~
+make: *** [Core/Src/subdir.mk:40: Core/Src/main.o] Error 1
+make: *** Waiting for unfinished jobs....
+"make -j12 all" terminated with exit code 2. Build might be incomplete.
+13:23:41 **** Incremental Build of configuration Debug for project Proyecto8C ****
+make -j12 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F107xC -c -I../Core/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3 -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c: In function 'StartTask05':
+../Core/Src/main.c:393:77: error: 'cont2' undeclared (first use in this function); did you mean 'conta2'?
+  393 |                                         osMessageQueuePut(num_pulsaHandle, &cont2, 0, 0);
+      |                                                                             ^~~~~
+      |                                                                             conta2
+../Core/Src/main.c:393:77: note: each undeclared identifier is reported only once for each function it appears in
+../Core/Src/main.c: In function 'Start_control_leds':
+../Core/Src/main.c:433:9: error: expected declaration or statement at end of input
+  433 |         }
+      |         ^
+At top level:
+../Core/Src/main.c:426:14: warning: 'Error_Handler' defined but not used [-Wunused-function]
+  426 |         void Error_Handler(void) {
+      |              ^~~~~~~~~~~~~
+../Core/Src/main.c:410:14: warning: 'HAL_TIM_PeriodElapsedCallback' defined but not used [-Wunused-function]
+  410 |         void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim) {
+      |              ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+../Core/Src/main.c:380:14: warning: 'StartTask05' defined but not used [-Wunused-function]
+  380 |         void StartTask05(void *argument) {
+      |              ^~~~~~~~~~~
+make: *** [Core/Src/subdir.mk:40: Core/Src/main.o] Error 1
+"make -j12 all" terminated with exit code 2. Build might be incomplete.
+13:24:14 **** Incremental Build of configuration Debug for project Proyecto8C ****
+make -j12 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F107xC -c -I../Core/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3 -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c: In function 'Start_control_leds':
+../Core/Src/main.c:433:9: error: expected declaration or statement at end of input
+  433 |         }
+      |         ^
+At top level:
+../Core/Src/main.c:426:14: warning: 'Error_Handler' defined but not used [-Wunused-function]
+  426 |         void Error_Handler(void) {
+      |              ^~~~~~~~~~~~~
+../Core/Src/main.c:410:14: warning: 'HAL_TIM_PeriodElapsedCallback' defined but not used [-Wunused-function]
+  410 |         void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim) {
+      |              ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+../Core/Src/main.c:380:14: warning: 'StartTask05' defined but not used [-Wunused-function]
+  380 |         void StartTask05(void *argument) {
+      |              ^~~~~~~~~~~
+make: *** [Core/Src/subdir.mk:40: Core/Src/main.o] Error 1
+"make -j12 all" terminated with exit code 2. Build might be incomplete.
+13:24:46 **** Incremental Build of configuration Debug for project Proyecto8C ****
+make -j12 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F107xC -c -I../Core/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3 -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/main.o"
+arm-none-eabi-gcc -o "Proyecto8C.elf" @"objects.list"   -mcpu=cortex-m3 -T"C:\Users\jesus\Documents\SETR1ws\Practicas-SETR1\Proyecto8C\STM32F107VCTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Proyecto8C.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: Proyecto8C.elf
+ 
+arm-none-eabi-size   Proyecto8C.elf 
+arm-none-eabi-objdump -h -S  Proyecto8C.elf  > "Proyecto8C.list"
+   text	   data	    bss	    dec	    hex	filename
+  22596	     24	   9168	  31788	   7c2c	Proyecto8C.elf
+Finished building: default.size.stdout
+ 
+Finished building: Proyecto8C.list
+ 
+13:25:11 **** Incremental Build of configuration Debug for project Proyecto8C ****
+make -j12 all 
+arm-none-eabi-size   Proyecto8C.elf 
+   text	   data	    bss	    dec	    hex	filename
+  22596	     24	   9168	  31788	   7c2c	Proyecto8C.elf
+Finished building: default.size.stdout
+ 
+13:25:35 **** Incremental Build of configuration Debug for project Proyecto8C ****
+make -j12 all 
+arm-none-eabi-size   Proyecto8C.elf 
+   text	   data	    bss	    dec	    hex	filename
+  22596	     24	   9168	  31788	   7c2c	Proyecto8C.elf
+Finished building: default.size.stdout
+ 
+13:30:21 **** Incremental Build of configuration Debug for project Proyecto8C ****
+make -j12 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F107xC -c -I../Core/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3 -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/main.o"
+arm-none-eabi-gcc -o "Proyecto8C.elf" @"objects.list"   -mcpu=cortex-m3 -T"C:\Users\jesus\Documents\SETR1ws\Practicas-SETR1\Proyecto8C\STM32F107VCTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Proyecto8C.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: Proyecto8C.elf
+ 
+arm-none-eabi-size   Proyecto8C.elf 
+arm-none-eabi-objdump -h -S  Proyecto8C.elf  > "Proyecto8C.list"
+   text	   data	    bss	    dec	    hex	filename
+  22596	     24	   9168	  31788	   7c2c	Proyecto8C.elf
+Finished building: default.size.stdout
+ 
+Finished building: Proyecto8C.list
+ 
+13:30:29 **** Incremental Build of configuration Debug for project Proyecto8C ****
+make -j12 all 
+arm-none-eabi-size   Proyecto8C.elf 
+   text	   data	    bss	    dec	    hex	filename
+  22596	     24	   9168	  31788	   7c2c	Proyecto8C.elf
+Finished building: default.size.stdout
+ 
