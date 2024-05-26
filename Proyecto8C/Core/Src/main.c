@@ -351,6 +351,7 @@ void Start_control_leds(void *argument) {
 	//mientras no se plse el tamper, esperamos de forma activa
 	while (HAL_GPIO_ReadPin(TAMPER_GPIO_Port, TAMPER_Pin) == 0) {
 		osDelay(101);
+	}
 		osMessageQueueReset(num_pulsaHandle);
 		for (;;) {
 			osMessageQueueGet(num_pulsaHandle, &respuesta, 0, 0xFFFFFFFF);
@@ -367,7 +368,7 @@ void Start_control_leds(void *argument) {
 			HAL_GPIO_WritePin(VERDE_GPIO_Port, VERDE_Pin, 0);
 			osDelay(10); // eliminar en la fase 4
 		}
-	}
+
 	/* USER CODE END Start_control_leds */
 }
 
