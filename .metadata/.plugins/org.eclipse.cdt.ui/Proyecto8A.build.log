@@ -1,0 +1,10 @@
+11:07:17 **** Incremental Build of configuration Debug for project Proyecto8A ****
+make -j12 all 
+arm-none-eabi-size   Proyecto8A.elf 
+   text	   data	    bss	    dec	    hex	filename
+  18708	     24	   9152	  27884	   6cec	Proyecto8A.elf
+Finished building: default.size.stdout
+ 
+
+11:07:18 Build Finished. 0 errors, 0 warnings. (took 444ms)
+
